@@ -72,6 +72,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = false;
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -86,6 +87,27 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    /**
+     *
+     *
+     *
+     * */
+
+    public function actionMaterial()
+    {
+        $this->layout = false;
+
+        return $this->render('material');
+    }
+
+    public function actionDetail()
+    {
+        $this->layout = false;
+        return $this->render('detail');
+    }
+
+
 
     /**
      * Logout action.
