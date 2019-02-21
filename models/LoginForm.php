@@ -13,10 +13,23 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
-    public $username;
+    public $uId;
+    public $userName;
     public $password;
+    public $cName;
+    public $phone;
+    public $email;
+    public $level;
+    public $levelName;
+    public $experience;
+    public $ITmoney;
+    public $money;
+    public $isDelete;
+    public $registerTime;
+    public $logoutTime;
+    public $loginTime;
+    public $isSystem;
     public $rememberMe = true;
-
     private $_user = false;
 
 
