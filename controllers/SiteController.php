@@ -130,6 +130,16 @@ class SiteController extends Controller
         return $this->render('detail');
     }
 
+    /**
+     *  协议
+     *
+     * */
+    public function actionAgreement()
+    {
+        $this->layout = false;
+        return $this->render('agreement');
+    }
+
 
 
     /**

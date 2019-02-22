@@ -4,40 +4,6 @@
 <meta charset="utf-8">
 <title>登录_dowebok</title>
 <link rel="stylesheet" href="/web/login/css/style.css">
-<style>
-/* ui */
-.ui-input { position: relative; padding: 15px 0; border-bottom: 1px solid #dfe6e5; font-size: 0; }
-.ui-input input { width: 100%; height: 30px; border: 0; font-size: 14px; outline: none; }
-
-.ui-button { height: 40px; border: 0; font-size: 14px; outline: none; cursor: pointer; }
-.ui-button--primary { color: #fff; background-color: #a6aaad; }
-.ui-button--success { color: #fff; background-color: #22d18e; }
-
-/* page */
-.form { width: 460px; margin: 0 auto; padding-top: 70px; }
-.form .captcha { height: 30px; vertical-align: top; cursor: pointer; }
-.form a { color: #7b7f81; }
-.form a:hover { color: #666; }
-
-.form-head { padding: 20px 0; text-align: center; }
-.form-head h2 { font-size: 24px; font-weight: 400; }
-.form-head p { margin-top: 12px; color: #7b7f81; }
-.form-head p a { text-decoration: underline; }
-
-.form-body { padding: 20px 40px; color: #222; }
-.form-body .err-msg { text-align: center; color: #fc5c5c; }
-
-.forget-password { margin-top: 10px; text-align: right; }
-.form .narrow-input input { width: 290px; margin-right: 10px; }
-.form .warn-msg { margin-bottom: 20px; }
-.form .err-msg + .warn-msg { margin-top: 12px; }
-.form .sms-button { display: inline-block; width: 80px; font-
-	size: 14px; text-align: right; color: #22d18e; }
-.form .sms-button:hover { color: #56e9b2; }
-.form .form-notice { color: #22d18e; }
-.form .ui-input.focus { border-bottom-color: #22d18e; }
-.form .ui-button { width: 100%; margin: 40px 0; }
-</style>
 <!--[if lt IE 9]>
 <script src="/web/login/js/html5shiv.js"></script>
 <![endif]-->
@@ -65,8 +31,8 @@
 	<div class="contact" style="padding: 20px; background-color: #fff;">
 		<form id="wp_login_form" action="" class="form">
 			<div class="form-head">
-				<h2>登录</h2>
-				<p>还没有账号？<a href="/register">立即注册</a></p>
+				<h2>注册</h2>
+				<p>已有账号？<a href="http://x5.com/?r=site/login">前往登录</a></p>
 			</div>
 			<div class="form-body">
 				<p id="result" class="err-msg"></p>
@@ -74,16 +40,20 @@
 					<input type="text" name="username" placeholder="用户名">
 				</div>
                 <div class="ui-input">
-                    <input type="text" name="username" placeholder="邮箱">
-                     <div class="btn btn-default">获取验证码</div>
+                    <input type="text" name="email" placeholder="邮箱">
+                    <input type="button" class="get-code-button" value="获取验证码">
+                </div>
+                <div class="ui-input">
+                    <input type="code" name="password" placeholder="请输入验证码">
                 </div>
 				<div class="ui-input">
 					<input type="password" name="password" placeholder="密码">
 				</div>
                 <div class="ui-input">
-                    <input type="password" name="password" placeholder="确认密码">
+                    <input type="password" name="spassword" placeholder="确认密码">
                 </div>
 				<button id="submitbtn" class="ui-button ui-button--primary">注册</button>
+                <p style="text-align: center;"><input type="checkbox" class="check" checked="">同意<a class="modalLink" href="http://x5.com/?r=site/agreement" data-toggle="tooltip" data-html="true" data-placement="top" title="" style="color:#337ab7">《注册声明》《版权声明》</a></p>
 			</div>
 		</form>
 		<script type="text/javascript">					
