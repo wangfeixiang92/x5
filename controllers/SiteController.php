@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\MailForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -95,6 +96,8 @@ class SiteController extends Controller
      */
     public function actionRegister()
     {
+        $mail = new MailForm();
+        $mail->sendMail();
         $this->layout = false;
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
