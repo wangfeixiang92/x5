@@ -68,6 +68,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/vendor/symfony/contracts" />
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-redis" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />

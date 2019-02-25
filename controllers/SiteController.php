@@ -66,6 +66,7 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+
     /**
      * Login action.
      *
@@ -184,7 +185,7 @@ class SiteController extends Controller
     }
 
 
-    public function actionTest(){
-        exit('我是路由测试');
+    public function actionPhpinfo(){
+        echo phpinfo();die;
     }
 }
