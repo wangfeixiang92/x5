@@ -1,6 +1,11 @@
-﻿<!doctype html>
+﻿<?php
+use yii\helpers\Html;
+use frontend\common\CommonHelper;
+?>
+<!doctype html>
 <html lang="zh-CN">
 <head>
+    <?= Html::csrfMetaTags() ?>
 <meta charset="utf-8">
 <title>登录_dowebok</title>
 <link rel="stylesheet" href="/web/login/css/style.css">
@@ -44,7 +49,7 @@
                     <input type="button" class="get-code-button" value="获取验证码">
                 </div>
                 <div class="ui-input">
-                    <input type="code" name="password" placeholder="请输入验证码">
+                    <input type="code" name="code" placeholder="请输入验证码">
                 </div>
 				<div class="ui-input">
 					<input type="password" name="password" placeholder="密码">
@@ -65,7 +70,6 @@
 			url:  "http://www.dowebok.com/login",
 			data: input_data,
 			success: function(msg){
-				console.log(msg);
 				$('.loader').remove();
 				$('#result').html(msg);
 			}
@@ -88,6 +92,38 @@
 <div style="display:none">
 <script src="/web/login/js/z_stat.php"></script>
 <script src="/web/login/js/hm.js"></script>
+    <script>
+            $('.get-code-button').click(function () {
+            //     $(this).css('background-color','#999');
+            //     $(this).unbind('click');
+            //     $(this).val('已发送');
+            //     setTimeout(function () {
+            //         $('.get-code-button').css('background-color','#21B384');
+            //         $('.get-code-button').bind('click');
+            //         $('.get-code-button').val('获取验证码');
+            //     },500);
+            // });
+               var userEmail = $('input[name="email"]').val();
+               // if(!userEmail){
+               //     alert('请输入邮箱地址');
+               //     return false;
+               // }
+                $.ajax({
+                    type: "POST",
+                    url:  "/?r=site/get-email-code",
+                    data: {
+                        _csrf:$('meta[name="csrf-token"]').attr("content"),
+                        userEmail:userEmail
+                    },
+                    success: function(msg){
+
+                    }
+                });
+                return false;
+
+            });
+
+    </script>
 </div>
 </body>
 </html>

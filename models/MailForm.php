@@ -18,12 +18,26 @@ class MailForm extends Model
     public $userEamil;
     public $userName;
 
+
+    /**
+     * @return array the validation rules.
+     */
+    public function rules()
+    {
+        return [
+            [ 'userEmail', 'required'],
+            ['userEmail', 'email'],
+        ];
+    }
+
+
+
     public  function sendMailCode(){
         $subject = '【Tbook官方邮件】';
         $randStr = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
         $code = substr($randStr,0,6);
         $content ='<p>您的此次验证码为：【'.$code.'】。</p>';
-        return $this->sendMail($this->userEamil,$this->userName,$subject,$content);
+        return $this->sendMail($this->userEmail,$this->userName,$subject,$content);
     }
 
 

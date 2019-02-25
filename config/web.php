@@ -43,6 +43,12 @@ $config = [
             ],
         ],
         'db' => $db,
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => '192.168.33.10',
+            'port' => 6379,
+            'database' => 0,
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

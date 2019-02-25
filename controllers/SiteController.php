@@ -184,6 +184,35 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    /**
+     *  获取邮箱验证码
+     *
+     * @param $userEmail
+     * @return json
+     * */
+    public  function actionGetEmailCode(){
+        $model = new MailForm();
+        if (!Yii::$app->request->isAjax || !$model->load(Yii::$app->request->post()) || !$model->validate()) {
+            return [
+                'message' => 'hello world',
+                'code' => 400,
+            ];
+        }
+        $res = $model->sendMailCode();
+        if($res){
+            return [
+                'message' => 'hello world',
+                'code' => 200,
+            ];
+        }
+        return [
+            'message' => 'hello world',
+            'code' => 400,
+        ];
+
+    }
+
+
 
     public function actionPhpinfo(){
         echo phpinfo();die;
