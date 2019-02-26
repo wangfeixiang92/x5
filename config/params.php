@@ -5,6 +5,7 @@ return [
         'adminEmail'=>'2120371570@qq.com',
         'adminName'=>'Tbook官方',
         'pop3'=>'cdneaergrasfedha',
-        'imap'=>'ytdtjitaqzhseaed'
+        'imap'=>'ytdtjitaqzhseaed',
+        'expire'=>600
     ]
 ];

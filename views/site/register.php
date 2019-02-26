@@ -113,7 +113,8 @@ use frontend\common\CommonHelper;
                     url:  "/?r=site/get-email-code",
                     data: {
                         _csrf:$('meta[name="csrf-token"]').attr("content"),
-                        userEmail:userEmail
+                        userEmail:userEmail,
+                        scene:'register'
                     },
                     success: function(msg){
 

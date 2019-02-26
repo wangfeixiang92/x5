@@ -11,12 +11,18 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 /**
- * ContactForm is the model behind the contact form.
+ * LoginForm is the model behind the login form.
+ *
+ * @property userEmail
+ * @property userName
+ *
  */
 class MailForm extends Model
 {
-    public $userEamil;
+    public $scene;
+    public $userEmail;
     public $userName;
+    public $errorTitle;
 
 
     /**
@@ -25,19 +31,27 @@ class MailForm extends Model
     public function rules()
     {
         return [
-            [ 'userEmail', 'required'],
-            ['userEmail', 'email'],
+            [['userEmail'], 'required'],
+            ['userEmail', 'email']
         ];
     }
 
 
 
     public  function sendMailCode(){
+        $this->errorTitle='邮箱验证码';
+        $this->userEmail='2579552905';
         $subject = '【Tbook官方邮件】';
         $randStr = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
         $code = substr($randStr,0,6);
         $content ='<p>您的此次验证码为：【'.$code.'】。</p>';
-        return $this->sendMail($this->userEmail,$this->userName,$subject,$content);
+        $result = $this->sendMail($this->userEmail,$this->userName,$subject,$content);
+        if($result){
+            $redisKey=$this->scene.'_'.$this->userEmail;
+            Yii::$app->redis->set($redisKey,$code);
+            Yii::$app->redis->expire($redisKey,Yii::$app->params['emailConfig']['expire']);
+        }
+        return $result;
     }
 
 
@@ -92,8 +106,9 @@ class MailForm extends Model
             $mail->Body    = $content;
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $status= $mail->send();
-            return true;
+            return $status;
         } catch (Exception $e) {
+            Yii::info('【'.$this->errorTitle.'】邮箱：'.$this->userEmail.'发送失败，场景：【'.$this->scene.'】错误：'.$mail->ErrorInfo);
           return false;
         }
 

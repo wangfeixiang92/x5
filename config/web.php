@@ -39,9 +39,24 @@ $config = [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                    'logFile' => '@runtime/logs/error.log',
                 ],
+                [
+                    'class' => 'yii\log\DbTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+                [
+                    'class' => 'yii\log\EmailTarget',
+                    'levels' => ['error'],
+                    'categories' => ['yii\db\*'],
+                    'message' => [
+                        'from' => ['2120371570@qq.com'],
+                        'to' => ['2579552905@qq.com'],
+                        'subject' => 'Database errors at x5.com',
+                    ],
             ],
         ],
+    ],
         'db' => $db,
         'redis' => [
             'class' => 'yii\redis\Connection',

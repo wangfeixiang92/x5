@@ -192,24 +192,19 @@ class SiteController extends Controller
      * */
     public  function actionGetEmailCode(){
         $model = new MailForm();
-        if (!Yii::$app->request->isAjax || !$model->load(Yii::$app->request->post()) || !$model->validate()) {
-            return [
-                'message' => 'hello world',
-                'code' => 400,
-            ];
+        if(!Yii::$app->request->isAjax || !Yii::$app->request->isPost){
+            return json_encode(['status' => 0,'msg'=>'请求方式非法']);
+        }
+        $model->load(Yii::$app->request->post(),'');
+        $checkRes = $model->validate();
+        if(!$checkRes){
+            return json_encode(['status' => 0,'msg'=>reset( $model->getErrors())[0]]);
         }
         $res = $model->sendMailCode();
-        if($res){
-            return [
-                'message' => 'hello world',
-                'code' => 200,
-            ];
+        if(!$res){
+            return json_encode(['status' => 0,'msg'=>'邮箱验证码发送失败']);
         }
-        return [
-            'message' => 'hello world',
-            'code' => 400,
-        ];
-
+        return json_encode(['status' => 1,'msg'=>'验证码发送成功，有效时间'.(Yii::$app->params['emailConfig']['expire']/60).'分钟']);
     }
 
 
