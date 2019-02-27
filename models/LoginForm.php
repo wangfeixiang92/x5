@@ -39,12 +39,26 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            // username and password are both required
-            [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
+            // 对username的值进行两边去空格过滤
+            ['userName', 'filter', 'filter' => 'trim'],
+            // required表示必须的，也就是说表单提交过来的值必须要有, message 是username不满足required规则时给的提示消息
+            ['userName', 'required', 'message' => '用户名不可以为空'],
+            // unique表示唯一性，targetClass表示的数据模型 这里就是说UserBackend模型对应的数据表字段username必须唯一
+            ['userName', 'unique', 'targetClass' => '\backend\models\UserBackend', 'message' => '用户名已存在.'],
+            // string 字符串，这里我们限定的意思就是username至少包含2个字符，最多30个字符
+            ['userName', 'string', 'min' => 2, 'max' => 30],
+            // 下面的规则基本上都同上，不解释了
+            ['email', 'filter', 'filter' => 'trim'],
+            ['email', 'required', 'message' => '邮箱不可以为空'],
+            ['email', 'email'],
+            ['email', 'string', 'max' => 100],
+            ['email', 'unique', 'targetClass' => '\backend\models\UserBackend', 'message' => 'email已经被设置了.'],
+            ['password', 'required', 'message' => '密码不可以为空'],
+            ['password', 'string', 'min' => 6, 'tooShort' => '密码至少填写6位'],
             ['password', 'validatePassword'],
+            // default 默认在没有数据的时候才会进行赋值
+            [['registerTime'], 'default', 'value' => date('Y-m-d H:i:s')],
+            [['updateTime'], 'default', 'value' =>time()]
         ];
     }
 

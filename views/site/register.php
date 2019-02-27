@@ -1,7 +1,12 @@
 ﻿<?php
 use yii\helpers\Html;
 use frontend\common\CommonHelper;
-?>
+use yii\widgets\ActiveForm;
+
+$form = ActiveForm::begin([
+    'id' => 'register-form',
+    'options' => ['class' => 'form-horizontal'],
+]) ?>
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -138,3 +143,6 @@ use frontend\common\CommonHelper;
 </div>
 </body>
 </html>
+<?php
+ActiveForm::end();
+?>
