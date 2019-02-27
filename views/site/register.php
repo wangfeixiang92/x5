@@ -45,7 +45,7 @@ use frontend\common\CommonHelper;
 					<input type="text" name="username" placeholder="用户名">
 				</div>
                 <div class="ui-input">
-                    <input type="text" name="email" placeholder="邮箱">
+                    <input type="text" name="email" id="userEmail" placeholder="邮箱">
                     <input type="button" class="get-code-button" value="获取验证码">
                 </div>
                 <div class="ui-input">
@@ -88,26 +88,36 @@ use frontend\common\CommonHelper;
 <script src="/web/login/js/jquery.min.js"></script>
 <script src="/web/login/js/swiper.min.js"></script>
 <script src="/web/login/js/script.js"></script>
-
+<script src="/web/login/js/mailCompletion.js"></script>
 <div style="display:none">
 <script src="/web/login/js/z_stat.php"></script>
 <script src="/web/login/js/hm.js"></script>
     <script>
+
+        //初始化自动邮箱补全插件
+        var mail = new hcMailCompletion('userEmail');
+        mail.run();
+
             $('.get-code-button').click(function () {
-            //     $(this).css('background-color','#999');
-            //     $(this).unbind('click');
-            //     $(this).val('已发送');
-            //     setTimeout(function () {
-            //         $('.get-code-button').css('background-color','#21B384');
-            //         $('.get-code-button').bind('click');
-            //         $('.get-code-button').val('获取验证码');
-            //     },500);
-            // });
+                $(this).css('background-color','#999');
+                $(this).attr('disabled', true);
+                var left_time = 60;
+                var tt = window.setInterval(function(){
+                    left_time = left_time - 1;
+                    if (left_time <= 0) {
+                        window.clearInterval(tt);
+                        $('.get-code-button').val('获取验证码');
+                        $('.get-code-button').css('background-color','#21B384');
+                        $('.get-code-button').removeAttr('disabled');
+                    }else {
+                        $('.get-code-button').val('（' + left_time + '）秒后重新发送');
+                    }
+                }, 1000);
                var userEmail = $('input[name="email"]').val();
-               // if(!userEmail){
-               //     alert('请输入邮箱地址');
-               //     return false;
-               // }
+               if(!userEmail){
+                   alert('请输入邮箱地址');
+                   return false;
+               }
                 $.ajax({
                     type: "POST",
                     url:  "/?r=site/get-email-code",
@@ -116,8 +126,8 @@ use frontend\common\CommonHelper;
                         userEmail:userEmail,
                         scene:'register'
                     },
-                    success: function(msg){
-
+                    success: function(data){
+                        alert(data.msg);
                     }
                 });
                 return false;

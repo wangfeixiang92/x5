@@ -23,7 +23,8 @@ class MailForm extends Model
     public $userEmail;
     public $userName;
     public $errorTitle;
-
+    public $redisKey;
+    public $userCode;
 
     /**
      * @return array the validation rules.
@@ -36,26 +37,88 @@ class MailForm extends Model
         ];
     }
 
-
+    /**
+     *  发送邮箱验证码
+     * @param $userEmail;
+     * @param $userName;
+     * @return string
+     * */
 
     public  function sendMailCode(){
         $this->errorTitle='邮箱验证码';
-        $this->userEmail='2579552905';
         $subject = '【Tbook官方邮件】';
         $randStr = str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
-        $code = substr($randStr,0,6);
+        $code = substr($randStr,0,4);
         $content ='<p>您的此次验证码为：【'.$code.'】。</p>';
         $result = $this->sendMail($this->userEmail,$this->userName,$subject,$content);
         if($result){
-            $redisKey=$this->scene.'_'.$this->userEmail;
-            Yii::$app->redis->set($redisKey,$code);
-            Yii::$app->redis->expire($redisKey,Yii::$app->params['emailConfig']['expire']);
+            $this->redisKey=$this->scene.'_'.$this->userEmail;
+            Yii::$app->redis->set($this->redisKey,$code);
+            Yii::$app->redis->expire($this->redisKey,Yii::$app->params['emailConfig']['expire']);
+            //增加发送记录
+            $this->addEmailLog();
         }
         return $result;
     }
 
+    /**
+     *  校验邮箱验证码
+     * @param $userEmail;
+     * @param $userName;
+     * @return string
+     * */
 
-    //发送邮件
+    public  function checkEmailCode(){
+        $this->redisKey=$this->scene.'_'.$this->userEmail;
+        if(strtolower(Yii::$app->redis->get($this->redisKey)) == strtolower($this->userCode)){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     *  检验邮箱或者IP发送次数限制
+     *
+     * @param $userEmail
+     * @return boolean
+     * */
+    public function  checkEmailLimit(){
+         $ip = Yii::$app->request->userIP;
+         $redisKey='emailLimit_'.date('ymd');
+         $redis = Yii::$app->redis;
+        if($redis->hget($redisKey,$ip) > Yii::$app->params['emailConfig']['ipLimit'] || $redis->hget($redisKey,$this->userEmail) > Yii::$app->params['emailConfig']['emailLimit']){
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     *  增加邮件记录
+     * @param $userIp
+     * @param $userEmail
+     * @return boolean
+     * */
+    public function  addEmailLog(){
+        $ip = Yii::$app->request->userIP;
+        $redisKey='emailLimit_'.date('ymd');
+        $redis = Yii::$app->redis;
+        $redis->hincrby($redisKey,$ip,1);
+        $redis->hincrby($redisKey,$this->userEmail,1);
+        $redis->expire($redisKey,24*60*60);
+    }
+
+
+
+
+    /**
+     *  发送邮件
+     *
+     * @param $userEmail;
+     * @param $userName;
+     * @param $subject
+     * @param $content
+     * @return string
+     * */
     public function  sendMail($userEamil,$userName,$subject,$content){
         // 实例化PHPMailer核心类
         $config = Yii::$app->params['emailConfig'];
@@ -63,7 +126,7 @@ class MailForm extends Model
         try {
             //Server settings
             // 是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式
-            $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+            //$mail->SMTPDebug = 1;                                 // Enable verbose debug output
             // 使用smtp鉴权方式发送邮件
             $mail->isSMTP();                                      // Set mailer to use SMTP
             // 链接qq域名邮箱的服务器地址

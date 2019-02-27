@@ -200,6 +200,9 @@ class SiteController extends Controller
         if(!$checkRes){
             return json_encode(['status' => 0,'msg'=>reset( $model->getErrors())[0]]);
         }
+        if(!$model->checkEmailLimit()){
+            return json_encode(['status' => 0,'msg'=>'今日邮件发送数已经达到最大']);
+        }
         $res = $model->sendMailCode();
         if(!$res){
             return json_encode(['status' => 0,'msg'=>'邮箱验证码发送失败']);

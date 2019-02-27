@@ -6,6 +6,8 @@ return [
         'adminName'=>'Tbook官方',
         'pop3'=>'cdneaergrasfedha',
         'imap'=>'ytdtjitaqzhseaed',
-        'expire'=>600
+        'expire'=>600,
+        'ipLimit'=>10,
+        'emailLimit'=>10
     ]
 ];
