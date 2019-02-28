@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\common\DbUser;
 use Yii;
 use yii\base\Model;
 
@@ -26,11 +27,14 @@ class LoginForm extends Model
     public $money;
     public $isDelete;
     public $registerTime;
+    public $updateTime;
     public $logoutTime;
     public $loginTime;
     public $isSystem;
     public $rememberMe = true;
     private $_user = false;
+    public $code;
+    public $rpassword;
 
 
     /**
@@ -39,26 +43,23 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            // 对username的值进行两边去空格过滤
             ['userName', 'filter', 'filter' => 'trim'],
-            // required表示必须的，也就是说表单提交过来的值必须要有, message 是username不满足required规则时给的提示消息
-            ['userName', 'required', 'message' => '用户名不可以为空'],
-            // unique表示唯一性，targetClass表示的数据模型 这里就是说UserBackend模型对应的数据表字段username必须唯一
-            ['userName', 'unique', 'targetClass' => '\backend\models\UserBackend', 'message' => '用户名已存在.'],
-            // string 字符串，这里我们限定的意思就是username至少包含2个字符，最多30个字符
+            ['userName', 'required', 'message' => '用户名不可以为空', 'on' =>'register'],
             ['userName', 'string', 'min' => 2, 'max' => 30],
-            // 下面的规则基本上都同上，不解释了
+            ['userName', 'validateUserName','on' =>'register'],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required', 'message' => '邮箱不可以为空'],
-            ['email', 'email'],
             ['email', 'string', 'max' => 100],
-            ['email', 'unique', 'targetClass' => '\backend\models\UserBackend', 'message' => 'email已经被设置了.'],
+            ['email', 'email','message'=>'请填写正确格式的邮箱'],
+            ['email', 'validateEmail', 'on' =>'register'],
             ['password', 'required', 'message' => '密码不可以为空'],
             ['password', 'string', 'min' => 6, 'tooShort' => '密码至少填写6位'],
-            ['password', 'validatePassword'],
-            // default 默认在没有数据的时候才会进行赋值
-            [['registerTime'], 'default', 'value' => date('Y-m-d H:i:s')],
-            [['updateTime'], 'default', 'value' =>time()]
+            ['password', 'validatePassword', 'on' =>'login'],
+            ['code',  'string', 'length'=>4, 'notEqual' => '验证码不合法'],
+            ['code', 'validateCode', 'on' =>'register'],
+            ['rpassword', 'validaterPassword','message'=>'确认密码跟密码不一致', 'on' =>'register'],
+            [['loginTime','updateTime'],'default','value'=>time()],
+            ['registerTime','default','value'=>date('Y-m-d H:i:s',time())],
         ];
     }
 
@@ -79,6 +80,79 @@ class LoginForm extends Model
             }
         }
     }
+
+
+    /**
+     *  验证确认密码
+     *
+     * @password
+     * @rpassword
+     * @return msg
+     * */
+    public function validateRpassword($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            if($this->password != $this->rpassword){
+                $this->addError($attribute, '确认密码跟密码不一致.');
+            }
+        }
+    }
+
+
+    /**
+     *  验证用户名
+     *
+     * @email
+     * @return msg
+     * */
+    public function validateUserName($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            if(  User::findByUsername($this->userName)){
+                $this->addError($attribute, '用户名已经存在.');
+            }
+        }
+    }
+
+
+
+    /**
+     *  验证邮箱
+     *
+     * @email
+     * @return msg
+     * */
+    public function validateEmail($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            if(User::findByEmail($this->email)){
+                $this->addError($attribute, '邮箱已经被注册.');
+            }
+        }
+    }
+
+
+    /**
+     *  验证邮箱验证码
+     *
+     * @email
+     * @return msg
+     * */
+    public function validateCode($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            $mail = new MailForm();
+            $mail->userCode=$this->code;
+            $mail->userEmail=$this->email;
+            $mail->scene = $this->scenario;
+            if(!$mail->checkEmailCode()){
+                $this->addError($attribute, '验证码错误.');
+            }
+        }
+    }
+
+
+
 
     /**
      * Logs in a user using the provided username and password.
@@ -105,4 +179,32 @@ class LoginForm extends Model
 
         return $this->_user;
     }
+
+
+    /**
+     *  注册用户
+     *
+     * @param $userName
+     * @param $email
+     * @param $password
+     * @return true;
+     * */
+
+    public function register()
+    {
+        $user = new DbUser();
+        $user->userName = $this->userName;
+        $user->email = $this->email;
+        $user->salt =Yii::$app->security->generateRandomString();
+        $user->password = Yii::$app->security->generatePasswordHash($this->password.$user->salt);
+        $user->updateTime = $this->updateTime;
+        $user->registerTime = $this->registerTime;
+        $user->loginTime = $this->loginTime;
+        $uid = $user->save();
+        var_dump($uid);die;
+    }
+
+
 }
+
+

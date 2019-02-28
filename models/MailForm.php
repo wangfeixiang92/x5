@@ -15,17 +15,19 @@ use PHPMailer\PHPMailer\Exception;
  *
  * @property userEmail
  * @property userName
- *
+ * @property scene
+ * @property errorTitle
+ * @property redisKey
+ * @property userCode
  */
 class MailForm extends Model
 {
-    public $scene;
     public $userEmail;
     public $userName;
     public $errorTitle;
     public $redisKey;
     public $userCode;
-
+    public $scene;
     /**
      * @return array the validation rules.
      */
@@ -33,7 +35,8 @@ class MailForm extends Model
     {
         return [
             [['userEmail'], 'required'],
-            ['userEmail', 'email']
+            ['userEmail', 'email'],
+            ['scene','default','value'=>'register']
         ];
     }
 
@@ -52,7 +55,7 @@ class MailForm extends Model
         $content ='<p>您的此次验证码为：【'.$code.'】。</p>';
         $result = $this->sendMail($this->userEmail,$this->userName,$subject,$content);
         if($result){
-            $this->redisKey=$this->scene.'_'.$this->userEmail;
+            $this->redisKey=$this->scene.'_'.$this->userEmail.'_code';
             Yii::$app->redis->set($this->redisKey,$code);
             Yii::$app->redis->expire($this->redisKey,Yii::$app->params['emailConfig']['expire']);
             //增加发送记录
@@ -69,7 +72,8 @@ class MailForm extends Model
      * */
 
     public  function checkEmailCode(){
-        $this->redisKey=$this->scene.'_'.$this->userEmail;
+        $this->redisKey=$this->scene.'_'.$this->userEmail.'_code';
+       // var_dump(Yii::$app->redis->get($this->redisKey));die;
         if(strtolower(Yii::$app->redis->get($this->redisKey)) == strtolower($this->userCode)){
             return true;
         }

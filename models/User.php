@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+use app\common\DbUser;
 
 class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
@@ -9,6 +10,7 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
     public $password;
     public $authKey;
     public $accessToken;
+    public $email;
 
     private static $users = [
         '100' => [
@@ -65,6 +67,17 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
         }
 
         return null;
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $email
+     * @return static|null
+     */
+    public static function findByEmail($email)
+    {
+       return DbUser::findOne(['email'=>$email]);
     }
 
     /**

@@ -39,52 +39,40 @@ $form = ActiveForm::begin([
 </header>
 <div class="main">
 	<div class="contact" style="padding: 20px; background-color: #fff;">
-		<form id="wp_login_form" action="" class="form">
+		<form id="wp_login_form" action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>"  method="post" class="form">
 			<div class="form-head">
 				<h2>注册</h2>
 				<p>已有账号？<a href="http://x5.com/?r=site/login">前往登录</a></p>
 			</div>
+			<?php if(isset($error)):?>
+            <p style="text-align: center;color: red">
+                <?= $error?>
+            </p>
+            <?php endif;?>
 			<div class="form-body">
 				<p id="result" class="err-msg"></p>
 				<div class="ui-input">
-					<input type="text" name="username" placeholder="用户名">
+					<input type="text" name="userName" placeholder="用户名" value="<?= $model->userName?$model->userName:'';?>">
 				</div>
                 <div class="ui-input">
-                    <input type="text" name="email" id="userEmail" placeholder="邮箱">
-                    <input type="button" class="get-code-button" value="获取验证码">
+                    <input type="text" name="email" id="userEmail" placeholder="邮箱" value="<?= $model->email?$model->email:'';?>">
+                    <input type="button" class="get-code-button" value="获取验证码" >
                 </div>
                 <div class="ui-input">
-                    <input type="code" name="code" placeholder="请输入验证码">
+                    <input type="code" name="code" placeholder="请输入验证码" value="<?= $model->code?$model->code:'';?>">
                 </div>
 				<div class="ui-input">
-					<input type="password" name="password" placeholder="密码">
+					<input type="password" name="password" placeholder="密码" value="<?= $model->password?$model->password:'';?>">
 				</div>
                 <div class="ui-input">
-                    <input type="password" name="spassword" placeholder="确认密码">
+                    <input type="password" name="rpassword" placeholder="确认密码"  value="<?= $model->rpassword?$model->rpassword:'';?>">
                 </div>
-				<button id="submitbtn" class="ui-button ui-button--primary">注册</button>
+                <input type="hidden" name='<?=Yii::$app->request->csrfParam?>' value="<?=Yii::$app->request->csrfToken?>"/>
+				<button style="background-color: #21B384;" id="submitbtn" class="ui-button ui-button--primary">注册</button>
                 <p style="text-align: center;"><input type="checkbox" class="check" checked="">同意<a class="modalLink" href="http://x5.com/?r=site/agreement" data-toggle="tooltip" data-html="true" data-placement="top" title="" style="color:#337ab7">《注册声明》《版权声明》</a></p>
 			</div>
 		</form>
-		<script type="text/javascript">					
-		$("#submitbtn").click(function() {
-		$('#result').html('<img src="img/loader.gif" class="loader" />').fadeIn();
-		var input_data = $('#wp_login_form').serialize();
-		$.ajax({
-			type: "POST",
-			url:  "http://www.dowebok.com/login",
-			data: input_data,
-			success: function(msg){
-				$('.loader').remove();
-				$('#result').html(msg);
-			}
-		});
-		return false;
-
-		});
-		</script>
 	</div>
-	
 </div>
 <footer class="ft">
 	<p>&copy; CopyRight 2016 dowebok.com <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备14034220号-1</a></p>
@@ -104,6 +92,11 @@ $form = ActiveForm::begin([
         mail.run();
 
             $('.get-code-button').click(function () {
+               var userEmail = $('input[name="email"]').val();
+               if(!userEmail){
+                   alert('请输入邮箱地址');
+                   return false;
+               }
                 $(this).css('background-color','#999');
                 $(this).attr('disabled', true);
                 var left_time = 60;
@@ -118,21 +111,18 @@ $form = ActiveForm::begin([
                         $('.get-code-button').val('（' + left_time + '）秒后重新发送');
                     }
                 }, 1000);
-               var userEmail = $('input[name="email"]').val();
-               if(!userEmail){
-                   alert('请输入邮箱地址');
-                   return false;
-               }
                 $.ajax({
                     type: "POST",
-                    url:  "/?r=site/get-email-code",
+                    url:  "/?r=login/get-email-code",
                     data: {
                         _csrf:$('meta[name="csrf-token"]').attr("content"),
                         userEmail:userEmail,
                         scene:'register'
                     },
                     success: function(data){
+                        var data =JSON.parse(data);
                         alert(data.msg);
+                        return false;
                     }
                 });
                 return false;

@@ -36,7 +36,7 @@ function logout() {
 		<form method="get" action="http://www.dowebok.com/">
 			<input class="key" type="text" name="s" placeholder="输入关键词"> <input class="go" type="submit" value="搜索">
 		</form>
-				<a class="login" href="http://www.dowebok.com/login?redirect_to=http%3A%2F%2Fwww.dowebok.com%2F">登录</a> <a class="reg" href="http://www.dowebok.com/register">注册</a>
+				<a class="login" href="">登录</a> <a class="reg" href="">注册</a>
 			</div>
 </header>
 <div class="main">

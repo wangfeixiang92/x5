@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class SiteController extends Controller
+class LoginController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -55,17 +55,6 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        $this->layout = false;
-        return $this->render('index');
-    }
-
 
     /**
      * Login action.
@@ -98,37 +87,27 @@ class SiteController extends Controller
     public function actionRegister()
     {
         $this->layout = false;
-        return $this->render('register');
-    }
-
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
-    public function actionRegisterAction()
-    {
-        $this->layout = false;
-
         if (!Yii::$app->user->isGuest) {
-                return $this->goHome();
-            }
+            return $this->goHome();
+        }
+        if(Yii::$app->request->isPost){
             $model = new LoginForm();
             $model->scenario='register';
-            if( !Yii::$app->request->isPost){
-                return json_encode(['status' => 0,'msg'=>'请求方式非法']);
-            }
             $model->load(Yii::$app->request->post(),'');
             $checkRes = $model->validate();
             if(!$checkRes){
                 return $this->render('register', [
                     'error' => reset( $model->getErrors())[0],
+                    'model'=>$model
                 ]);
+            }
+            $model->register();
         }
-        return $this->render('register', [
-            'model' => $model,
-        ]);
+        return $this->render('register',[
+                    'model'=>$model
+                ]);
     }
+
 
 
 
