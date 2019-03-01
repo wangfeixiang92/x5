@@ -39,6 +39,7 @@ class LoginForm extends Model
     private $_user = false;
     public $code;
     public $rpassword;
+    public $account;
 
 
     /**
@@ -47,23 +48,25 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            ['userName', 'filter', 'filter' => 'trim'],
-            ['userName', 'required', 'message' => '用户名不可以为空', 'on' =>'register'],
-            ['userName', 'string', 'min' => 2, 'max' => 30],
-            ['userName', 'validateUserName','on' =>'register'],
-            ['userName', 'validateBlackUserName','message'=>'账号异常，请联系客服'],
-            ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required', 'message' => '邮箱不可以为空'],
-            ['email', 'string', 'max' => 100],
-            ['email', 'email','message'=>'请填写正确格式的邮箱'],
-            ['email', 'validateEmail', 'on' =>'register'],
-            ['email', 'validateBlackEmail','message'=>'账号异常，请联系客服'],
+            ['account', 'filter', 'filter' => 'trim','on' =>['login']],
+            ['account', 'required', 'message' => '请输入用户名或者邮箱号', 'on' =>['login']],
+            ['userName', 'filter', 'filter' => 'trim', 'on' =>['register']],
+            ['userName', 'required', 'message' => '用户名不可以为空', 'on' =>['register']],
+            ['userName', 'string', 'min' => 2, 'max' => 30,'on' =>['register']],
+            ['userName', 'validateUserName','on' =>['register']],
+            ['userName', 'validateBlackUserName','message'=>'账号异常，请联系客服','on' =>['register']],
+            ['email', 'filter', 'filter' => 'trim','on' =>['register']],
+            ['email', 'required', 'message' => '邮箱不可以为空','on' =>['register']],
+            ['email', 'string', 'max' => 100,'on' =>['register']],
+            ['email', 'email','message'=>'请填写正确格式的邮箱','on' =>['register']],
+            ['email', 'validateEmail', 'on' =>['register']],
+            ['email', 'validateBlackEmail','message'=>'账号异常，请联系客服','on' =>['register']],
             ['password', 'required', 'message' => '密码不可以为空'],
             ['password', 'string', 'min' => 6, 'tooShort' => '密码至少填写6位'],
-            ['password', 'validatePassword', 'on' =>'login'],
-            ['code',  'string', 'length'=>4, 'notEqual' => '验证码不合法'],
-            ['code', 'validateCode', 'on' =>'register'],
-            ['rpassword', 'validaterPassword','message'=>'确认密码跟密码不一致', 'on' =>'register'],
+           // ['password', 'validatePassword','on' =>['login']],
+            ['code',  'string', 'length'=>4, 'notEqual' => '验证码不合法','on' =>['register']],
+            ['code', 'validateCode','on' =>['register']],
+            ['rpassword', 'validaterPassword','message'=>'确认密码跟密码不一致', 'on' =>['register']],
             [['loginTime','updateTime'],'default','value'=>time()],
             ['registerTime','default','value'=>date('Y-m-d H:i:s',time())],
         ];
@@ -79,10 +82,19 @@ class LoginForm extends Model
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            $user = $this->getUser();
-
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+            $user = DbUser::find()
+                ->where(['userName'=>$this->account])
+                ->orWhere(['email'=>$this->account])
+                ->one();
+            if(!$user){
+                $this->addError($attribute, '账号信息不存在');
+            }
+            //账号存在,对比密码
+            $salt=$user->salt;
+            //用户表单提交的密码加密
+            $securityPassword=$this->password.$user->salt;
+            if (!Yii::$app->security->validatePassword($securityPassword,$user->password)) {
+              $this->addError($attribute, '帐号或密码错误');
             }
         }
     }
@@ -199,25 +211,29 @@ class LoginForm extends Model
      */
     public function login()
     {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
-        }
-        return false;
+        $userInfo = DbUser::find()
+            ->where(['userName'=>$this->account])
+            ->orWhere(['email'=>$this->account])
+            ->asArray()
+            ->one();
+        $redisKey='userInfo';
+        Yii::$app->session->set($redisKey, json_encode($userInfo));
+        //增加统计记录
+        (new UserLoginLog())->addLog($userInfo['uId']);
+        (new EveryDayData())->addLoginLog();
+        return $userInfo;
     }
 
     /**
-     * Finds user by [[username]]
-     *
-     * @return User|null
-     */
-    public function getUser()
+     * 退出
+     * */
+    public function logout()
     {
-        if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
-        }
-
-        return $this->_user;
+        $redisKey='userInfo';
+        $result = Yii::$app->session->get($redisKey);
+        return Yii::$app->session->remove($redisKey);
     }
+
 
 
     /**

@@ -13,31 +13,32 @@ use app\models\ContactForm;
 
 class LoginController extends Controller
 {
+    public $layout = 'login';
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
+//    public function behaviors()
+//    {
+//        return [
+//            'access' => [
+//                'class' => AccessControl::className(),
+//                'only' => ['logout'],
+//                'rules' => [
+//                    [
+//                        'actions' => ['logout'],
+//                        'allow' => true,
+//                        'roles' => ['@'],
+//                    ],
+//                ],
+//            ],
+//            'verbs' => [
+//                'class' => VerbFilter::className(),
+//                'actions' => [
+//                    'logout' => ['post'],
+//                ],
+//            ],
+//        ];
+  //  }
 
     /**
      * {@inheritdoc}
@@ -61,19 +62,31 @@ class LoginController extends Controller
      *
      * @return Response|string
      */
-    public function actionLogin()
+    public function actionIndex()
     {
-        $this->layout = false;
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        if(Yii::$app->request->isPost) {
+            $model->scenario = 'login';
+            $model->load(Yii::$app->request->post(), '');
+            $checkRes = $model->validate();
+            if (!$checkRes) {
+                return $this->render('login', [
+                    'error' => reset($model->getErrors())[0],
+                    'model' => $model
+                ]);
+            }
+            $result = $model->login();
+            if(!$result){
+                return $this->render('login',['model'=>$model]);
+            }
+            if(empty(Yii::$app->request->referrer)){
+                return $this->redirect( Yii::$app->user->returnUrl);
+            }
+            return $this->redirect(Yii::$app->request->referrer);
         }
-
-        $model->password = '';
         return $this->render('login', [
             'model' => $model,
         ]);
@@ -86,7 +99,6 @@ class LoginController extends Controller
      */
     public function actionRegister()
     {
-        $this->layout = false;
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -101,42 +113,21 @@ class LoginController extends Controller
                     'model'=>$model
                 ]);
             }
-            $model->register();
+            $result = $model->register();
+            //跳转
+            if(!$result){
+                return $this->render('register',['model'=>$model]);
+            }
+            if(empty(Yii::$app->request->referrer)){
+                return $this->redirect( Yii::$app->user->returnUrl);
+            }
+            return $this->redirect(Yii::$app->request->referrer);
         }
         return $this->render('register',['model'=>$model]);
     }
 
 
 
-
-    /**
-     *
-     *
-     *
-     * */
-
-    public function actionMaterial()
-    {
-        $this->layout = false;
-
-        return $this->render('material');
-    }
-
-    public function actionDetail()
-    {
-        $this->layout = false;
-        return $this->render('detail');
-    }
-
-    /**
-     *  协议
-     *
-     * */
-    public function actionAgreement()
-    {
-        $this->layout = false;
-        return $this->render('agreement');
-    }
 
 
 
@@ -147,38 +138,13 @@ class LoginController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
+        $model = new LoginForm();
+        if($model->logout() || empty(Yii::$app->request->referrer)){
+            return $this->redirect( Yii::$app->user->returnUrl);
         }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 
     /**
      *  获取邮箱验证码
@@ -207,8 +173,4 @@ class LoginController extends Controller
     }
 
 
-
-    public function actionPhpinfo(){
-        echo phpinfo();die;
-    }
 }

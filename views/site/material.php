@@ -1,34 +1,4 @@
-﻿<!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="keywords" content="dowebok,素材,PSD,PNG,AI,EPS,SVG,图标,矢量">
-<meta name="description" content="dowebok素材频道，为用户提供各种最新的素材。">
-<title>素材_dowebok</title>
-<link rel="stylesheet" href="/web/material/css/style.css">
-<link rel="stylesheet" href="/web/material/css/swiper.min.css">
-<!--[if lt IE 9]>
-<script src="/web/material/js/html5shiv.js"></script>
-<![endif]-->
-</head>
-
-<body>
-<header class="hd">
-	<h1><a href="http://www.dowebok.com/" title="dowebok">dowebok</a></h1>
-	<ul class="nav">
-		<li><a href="http://www.dowebok.com/" title="首页">首页</a></li>
-		<li><a href="http://www.dowebok.com/code" title="代码">代码</a></li>
-		<li><a class="cur" href="http://www.dowebok.com/material" title="素材">素材</a></li>
-		<li><a href="http://www.dowebok.com/template" title="模板">模板</a></li>
-		<li><a href="http://www.dowebok.com/contact" title="联系">联系</a></li>
-	</ul>
-	<div class="search">
-		<form method="get" action="http://www.dowebok.com/">
-			<input class="key" type="text" name="s" placeholder="输入关键词"> <input class="go" type="submit" value="搜索">
-		</form>
-				<a class="login" href="http://www.dowebok.com/login?redirect_to=http%3A%2F%2Fwww.dowebok.com%2Fmaterial">登录</a> <a class="reg" href="http://www.dowebok.com/register">注册</a>
-			</div>
-</header>
+﻿
 <div class="main">
 	<div class="slidebar">
     <div class="swiper-container">
@@ -195,17 +165,3 @@
 	<div class='wp-pagenavi' role='navigation'>
 <span class='pages'>共110页</span><span aria-current='page' class='current'>1</span><a class="page larger" title="Page 2" href="http://www.dowebok.com/material/page/2">2</a><a class="page larger" title="Page 3" href="http://www.dowebok.com/material/page/3">3</a><a class="page larger" title="Page 4" href="http://www.dowebok.com/material/page/4">4</a><a class="page larger" title="Page 5" href="http://www.dowebok.com/material/page/5">5</a><span class='extend'>...</span><a class="larger page" title="Page 10" href="http://www.dowebok.com/material/page/10">10</a><a class="larger page" title="Page 20" href="http://www.dowebok.com/material/page/20">20</a><a class="larger page" title="Page 30" href="http://www.dowebok.com/material/page/30">30</a><span class='extend'>...</span><a class="nextpostslink" rel="next" href="http://www.dowebok.com/material/page/2">下一页</a><a class="last" href="http://www.dowebok.com/material/page/110">尾页</a>
 </div></div>
-<footer class="ft">
-	<p>&copy; CopyRight 2016 dowebok.com <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备14034220号-1</a></p>
-</footer>
-
-<script src="/web/material/js/jquery.min.js"></script>
-<script src="/web/material/js/swiper.min.js"></script>
-<script src="/web/material/js/script.js"></script>
-
-<div style="display:none">
-<script src="/web/material/js/z_stat.php"></script>
-<script src="/web/material/js/hm.js"></script>
-</div>
-</body>
-</html>

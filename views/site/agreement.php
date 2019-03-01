@@ -1,31 +1,4 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <title>联系_dowebok</title>
-    <link rel="stylesheet" href="/web/agreement/css/style.css">
-    <!--[if lt IE 9]>
-    <script src="/web/agreement/js/html5shiv.js"></script>
-    <![endif]-->
-</head>
 
-<body>
-<header class="hd">
-    <h1><a href="http://www.dowebok.com/" title="dowebok">dowebok</a></h1>
-    <ul class="nav">
-        <li><a href="http://www.dowebok.com/" title="首页">首页</a></li>
-        <li><a href="http://www.dowebok.com/code" title="代码">代码</a></li>
-        <li><a href="http://www.dowebok.com/material" title="素材">素材</a></li>
-        <li><a href="http://www.dowebok.com/template" title="模板">模板</a></li>
-        <li><a href="http://www.dowebok.com/contact" title="联系">联系</a></li>
-    </ul>
-    <div class="search">
-        <form method="get" action="http://www.dowebok.com/">
-            <input class="key" type="text" name="s" placeholder="输入关键词"> <input class="go" type="submit" value="搜索">
-        </form>
-        <a class="login" href="http://www.dowebok.com/login?redirect_to=http%3A%2F%2Fwww.dowebok.com%2Fcontact">登录</a> <a class="reg" href="http://www.dowebok.com/register">注册</a>
-    </div>
-</header>
 <div class="main">
     <div class="contact" style="height: 700px; padding: 20px; background-color: #fff;">
 
@@ -48,13 +21,3 @@
     <p>&copy; CopyRight 2016 dowebok.com <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备14034220号-1</a></p>
 </footer>
 
-<script src="/web/agreement/js/jquery.min.js"></script>
-<script src="/web/agreement/js/swiper.min.js"></script>
-<script src="/web/agreement/js/script.js"></script>
-
-<div style="display:none">
-    <script src="/web/agreement/js/z_stat.php"></script>
-    <script src="/web/agreement/js/hm.js"></script>
-</div>
-</body>
-</html>

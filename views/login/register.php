@@ -1,48 +1,13 @@
 ﻿<?php
 use yii\helpers\Html;
-use frontend\common\CommonHelper;
-use yii\widgets\ActiveForm;
+ ?>
 
-$form = ActiveForm::begin([
-    'id' => 'register-form',
-    'options' => ['class' => 'form-horizontal'],
-]) ?>
-<!doctype html>
-<html lang="zh-CN">
-<head>
-    <?= Html::csrfMetaTags() ?>
-<meta charset="utf-8">
-<title>登录_dowebok</title>
-<link rel="stylesheet" href="/web/login/css/style.css">
-<!--[if lt IE 9]>
-<script src="/web/login/js/html5shiv.js"></script>
-<![endif]-->
-<script src="/web/login/js/jquery.min.js"></script>
-</head>
-
-<body>
-<header class="hd">
-	<h1><a href="http://www.dowebok.com/" title="dowebok">dowebok</a></h1>
-	<ul class="nav">
-		<li><a href="http://www.dowebok.com/" title="首页">首页</a></li>
-		<li><a href="http://www.dowebok.com/code" title="代码">代码</a></li>
-		<li><a href="http://www.dowebok.com/material" title="素材">素材</a></li>
-		<li><a href="http://www.dowebok.com/template" title="模板">模板</a></li>
-		<li><a href="http://www.dowebok.com/contact" title="联系">联系</a></li>
-	</ul>
-	<div class="search">
-		<form action="">
-			<input class="key" type="text" value="输入关键词"> <input class="go" type="submit" value="搜索">
-		</form>
-		<a class="login" href="">登录</a> <a class="reg" href="">注册</a>
-	</div>
-</header>
 <div class="main">
 	<div class="contact" style="padding: 20px; background-color: #fff;">
 		<form id="wp_login_form" action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>"  method="post" class="form">
 			<div class="form-head">
 				<h2>注册</h2>
-				<p>已有账号？<a href="http://x5.com/?r=site/login">前往登录</a></p>
+				<p>已有账号？<a href="<?= Yii::$app->urlManager->createUrl(['login/index'])?>">前往登录</a></p>
 			</div>
 			<?php if(isset($error)):?>
             <p style="text-align: center;color: red">
@@ -74,19 +39,7 @@ $form = ActiveForm::begin([
 		</form>
 	</div>
 </div>
-<footer class="ft">
-	<p>&copy; CopyRight 2016 dowebok.com <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备14034220号-1</a></p>
-</footer>
-
-<script src="/web/login/js/jquery.min.js"></script>
-<script src="/web/login/js/swiper.min.js"></script>
-<script src="/web/login/js/script.js"></script>
-<script src="/web/login/js/mailCompletion.js"></script>
-<div style="display:none">
-<script src="/web/login/js/z_stat.php"></script>
-<script src="/web/login/js/hm.js"></script>
     <script>
-
         //初始化自动邮箱补全插件
         var mail = new hcMailCompletion('userEmail');
         mail.run();
@@ -128,11 +81,5 @@ $form = ActiveForm::begin([
                 return false;
 
             });
-
     </script>
-</div>
-</body>
-</html>
-<?php
-ActiveForm::end();
-?>
+
