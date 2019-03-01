@@ -57,4 +57,13 @@ return array (
       '@yii/redis' => $vendorDir . '/yiisoft/yii2-redis/src',
     ),
   ),
+  'myweishanli/yii2-ip2location' => 
+  array (
+    'name' => 'myweishanli/yii2-ip2location',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@wsl/ip2location' => $vendorDir . '/myweishanli/yii2-ip2location/src',
+    ),
+  ),
 );

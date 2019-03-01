@@ -58,27 +58,47 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
      * @param string $username
      * @return static|null
      */
-    public static function findByUsername($username)
+    public static function findByUsername($userName)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        return DbUser::findOne(['userName'=>$userName,'isDelete'=>0]);
     }
 
+
     /**
-     * Finds user by username
+     * Finds black user by username
+     *
+     * @param string $email
+     * @return static|null
+     */
+    public static function findBlackByUsername($userName)
+    {
+        return DbUser::findOne(['userName'=>$userName,'status'=>-1,'isDelete'=>0]);
+    }
+
+
+
+    /**
+     * Finds user by email
      *
      * @param string $email
      * @return static|null
      */
     public static function findByEmail($email)
     {
-       return DbUser::findOne(['email'=>$email]);
+       return DbUser::findOne(['email'=>$email,'isDelete'=>0]);
     }
+
+    /**
+     * Finds black user by email
+     *
+     * @param string $email
+     * @return static|null
+     */
+    public static function findBlackByEmail($email)
+    {
+        return DbUser::findOne(['email'=>$email,'status'=>-1,'isDelete'=>0]);
+    }
+
 
     /**
      * {@inheritdoc}

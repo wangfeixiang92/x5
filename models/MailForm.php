@@ -73,7 +73,6 @@ class MailForm extends Model
 
     public  function checkEmailCode(){
         $this->redisKey=$this->scene.'_'.$this->userEmail.'_code';
-       // var_dump(Yii::$app->redis->get($this->redisKey));die;
         if(strtolower(Yii::$app->redis->get($this->redisKey)) == strtolower($this->userCode)){
             return true;
         }

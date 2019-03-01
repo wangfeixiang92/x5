@@ -2,7 +2,11 @@
 
 namespace app\models;
 
+use app\common\DbEverDayDataLog;
+use app\common\DbLevelName;
 use app\common\DbUser;
+use app\common\DbUserLoginLog;
+use Codeception\Module\Db;
 use Yii;
 use yii\base\Model;
 
@@ -47,11 +51,13 @@ class LoginForm extends Model
             ['userName', 'required', 'message' => '用户名不可以为空', 'on' =>'register'],
             ['userName', 'string', 'min' => 2, 'max' => 30],
             ['userName', 'validateUserName','on' =>'register'],
+            ['userName', 'validateBlackUserName','message'=>'账号异常，请联系客服'],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required', 'message' => '邮箱不可以为空'],
             ['email', 'string', 'max' => 100],
             ['email', 'email','message'=>'请填写正确格式的邮箱'],
             ['email', 'validateEmail', 'on' =>'register'],
+            ['email', 'validateBlackEmail','message'=>'账号异常，请联系客服'],
             ['password', 'required', 'message' => '密码不可以为空'],
             ['password', 'string', 'min' => 6, 'tooShort' => '密码至少填写6位'],
             ['password', 'validatePassword', 'on' =>'login'],
@@ -115,6 +121,24 @@ class LoginForm extends Model
     }
 
 
+    /**
+     *  验证黑名单
+     *
+     * @email
+     * @return msg
+     * */
+    public function validateBlackUserName($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            if(  User::findBlackByUsername($this->userName)){
+                $this->addError($attribute, '账号异常，请联系客服.');
+            }
+        }
+    }
+
+
+
+
 
     /**
      *  验证邮箱
@@ -127,6 +151,21 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             if(User::findByEmail($this->email)){
                 $this->addError($attribute, '邮箱已经被注册.');
+            }
+        }
+    }
+
+    /**
+     *  验证黑名单邮箱
+     *
+     * @email
+     * @return msg
+     * */
+    public function validateBlackEmail($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            if(User::findBlackByEmail($this->email)){
+                $this->addError($attribute, '账号异常，请联系客服.');
             }
         }
     }
@@ -200,9 +239,21 @@ class LoginForm extends Model
         $user->updateTime = $this->updateTime;
         $user->registerTime = $this->registerTime;
         $user->loginTime = $this->loginTime;
-        $uid = $user->save();
-        var_dump($uid);die;
+        $user->level=1;
+        $user->levelName=DbLevelName::findOne(['level'=>1,'isDelete'=>0])['levelName'];
+        $result = $user->save();
+        if($result){
+            $this->uId =Yii::$app->db->getLastInsertID();
+            //增加统计记录
+            (new UserLoginLog())->addLog( $this->uId);
+            (new EveryDayData())->addRegisterLog();
+        }
+        return $result;
     }
+
+
+
+
 
 
 }

@@ -90,8 +90,8 @@ class LoginController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+        $model = new LoginForm();
         if(Yii::$app->request->isPost){
-            $model = new LoginForm();
             $model->scenario='register';
             $model->load(Yii::$app->request->post(),'');
             $checkRes = $model->validate();
@@ -103,9 +103,7 @@ class LoginController extends Controller
             }
             $model->register();
         }
-        return $this->render('register',[
-                    'model'=>$model
-                ]);
+        return $this->render('register',['model'=>$model]);
     }
 
 
