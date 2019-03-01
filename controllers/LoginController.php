@@ -126,7 +126,43 @@ class LoginController extends Controller
         return $this->render('register',['model'=>$model]);
     }
 
-
+    /*
+     * 忘记密码
+     *
+     * @param userEmail
+     * @param $code
+     * @param password
+     * @param rpassword
+     * @return view
+     * */
+    public function actionForgetPassword()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $model = new LoginForm();
+        if(Yii::$app->request->isPost){
+            $model->scenario='forgetpassword';
+            $model->load(Yii::$app->request->post(),'');
+            $checkRes = $model->validate();
+            if(!$checkRes){
+                return $this->render('forgetpassword', [
+                    'error' => reset( $model->getErrors())[0],
+                    'model'=>$model
+                ]);
+            }
+            $result = $model->forgetpassword();
+            //跳转
+            if(!$result){
+                return $this->render('forgetpassword',['model'=>$model]);
+            }
+            if(empty(Yii::$app->request->referrer)){
+                return $this->redirect( Yii::$app->user->returnUrl);
+            }
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+        return $this->render('forgetpassword',['model'=>$model]);
+    }
 
 
 

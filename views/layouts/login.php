@@ -55,7 +55,6 @@ AppAsset::register($this);
 </footer>
 <script src="<?= \app\common\CommonHelper::getAssetUrl('/web/login/js/jquery.min.js')?>"></script>
 <script src="<?= \app\common\CommonHelper::getAssetUrl('/web/login/js/swiper.min.js')?>"></script>
-<script src="<?= \app\common\CommonHelper::getAssetUrl('/web/login/js/mailCompletion.js')?>"></script>
 <div style="display:none">
     <script src="<?= \app\common\CommonHelper::getAssetUrl('/web/login/js/z_stat.php')?>"></script>
     <script src="<?= \app\common\CommonHelper::getAssetUrl('/web/login/js/hm.js')?>"></script>

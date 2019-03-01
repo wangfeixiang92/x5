@@ -1,6 +1,6 @@
 ﻿<div class="main">
 	<div class="contact" style="padding: 20px; background-color: #fff;">
-		<form id="wp_login_form" action="<?= Yii::$app->urlManager->createUrl(['login/login'])?>"  method="post" class="form">
+		<form id="wp_login_form" action="<?= Yii::$app->urlManager->createUrl(['login/index'])?>"  method="post" class="form">
 			<div class="form-head">
 				<h2>登录</h2>
 				<p>还没有账号？<a href="<?= Yii::$app->urlManager->createUrl(['login/register'])?>">立即注册</a></p>

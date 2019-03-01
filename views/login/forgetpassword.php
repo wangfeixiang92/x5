@@ -4,10 +4,10 @@ use yii\helpers\Html;
 
 <div class="main">
 	<div class="contact" style="padding: 20px; background-color: #fff;">
-		<form id="wp_login_form" action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>"  method="post" class="form">
+		<form id="wp_login_form" action="<?= Yii::$app->urlManager->createUrl(['login/forget-password'])?>"  method="post" class="form">
 			<div class="form-head">
-				<h2>注册</h2>
-				<p>已有账号？<a href="<?= Yii::$app->urlManager->createUrl(['login/index'])?>">前往登录</a></p>
+				<h2>忘记密码</h2>
+				<p><a href="<?= Yii::$app->urlManager->createUrl(['login/index'])?>">前往登录</a></p>
 			</div>
 			<?php if(isset($error)):?>
             <p style="text-align: center;color: red">
@@ -16,9 +16,6 @@ use yii\helpers\Html;
             <?php endif;?>
 			<div class="form-body">
 				<p id="result" class="err-msg"></p>
-				<div class="ui-input">
-					<input type="text" name="userName" placeholder="用户名" value="<?= $model->userName?$model->userName:'';?>">
-				</div>
                 <div class="ui-input">
                     <input type="text" name="email" id="userEmail" placeholder="邮箱" value="<?= $model->email?$model->email:'';?>">
                     <input type="button" class="get-code-button" value="获取验证码" >
@@ -71,7 +68,7 @@ use yii\helpers\Html;
                     data: {
                         _csrf:$('meta[name="csrf-token"]').attr("content"),
                         userEmail:userEmail,
-                        scene:'register'
+                        scene:'forgetpassword'
                     },
                     success: function(data){
                         var data =JSON.parse(data);

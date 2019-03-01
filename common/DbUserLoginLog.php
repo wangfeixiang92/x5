@@ -10,7 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $uid
  * @property string $loginTime
- * @property string $loginOutTime
+ * @property string $logoutTime
  * @property string $client
  * @property string $ip
  * @property integer $address

@@ -9,6 +9,7 @@ use app\common\DbUserLoginLog;
 use Codeception\Module\Db;
 use Yii;
 use yii\base\Model;
+use yii\helpers\Json;
 
 /**
  * LoginForm is the model behind the login form.
@@ -55,18 +56,18 @@ class LoginForm extends Model
             ['userName', 'string', 'min' => 2, 'max' => 30,'on' =>['register']],
             ['userName', 'validateUserName','on' =>['register']],
             ['userName', 'validateBlackUserName','message'=>'账号异常，请联系客服','on' =>['register']],
-            ['email', 'filter', 'filter' => 'trim','on' =>['register']],
-            ['email', 'required', 'message' => '邮箱不可以为空','on' =>['register']],
-            ['email', 'string', 'max' => 100,'on' =>['register']],
-            ['email', 'email','message'=>'请填写正确格式的邮箱','on' =>['register']],
-            ['email', 'validateEmail', 'on' =>['register']],
-            ['email', 'validateBlackEmail','message'=>'账号异常，请联系客服','on' =>['register']],
+            ['email', 'filter', 'filter' => 'trim','on' =>['register','forgetpassword']],
+            ['email', 'required', 'message' => '邮箱不可以为空','on' =>['register','forgetpassword']],
+            ['email', 'string', 'max' => 100,'on' =>['register','forgetpassword']],
+            ['email', 'email','message'=>'请填写正确格式的邮箱','on' =>['register','forgetpassword']],
+            ['email', 'validateEmail', 'on' =>['register','forgetpassword']],
+            ['email', 'validateBlackEmail','message'=>'账号异常，请联系客服','on' =>['register','forgetpassword']],
             ['password', 'required', 'message' => '密码不可以为空'],
             ['password', 'string', 'min' => 6, 'tooShort' => '密码至少填写6位'],
-           // ['password', 'validatePassword','on' =>['login']],
-            ['code',  'string', 'length'=>4, 'notEqual' => '验证码不合法','on' =>['register']],
-            ['code', 'validateCode','on' =>['register']],
-            ['rpassword', 'validaterPassword','message'=>'确认密码跟密码不一致', 'on' =>['register']],
+            ['password', 'validatePassword','on' =>['login']],
+            ['code',  'string', 'length'=>4, 'notEqual' => '验证码不合法','on' =>['register','forgetpassword']],
+            ['code', 'validateCode','on' =>['register','forgetpassword']],
+            ['rpassword', 'validaterPassword','message'=>'确认密码跟密码不一致', 'on' =>['register','forgetpassword']],
             [['loginTime','updateTime'],'default','value'=>time()],
             ['registerTime','default','value'=>date('Y-m-d H:i:s',time())],
         ];
@@ -161,8 +162,11 @@ class LoginForm extends Model
     public function validateEmail($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            if(User::findByEmail($this->email)){
+            if(User::findByEmail($this->email) && $this->scenario == 'register'){
                 $this->addError($attribute, '邮箱已经被注册.');
+            }
+            if(!User::findByEmail($this->email) && $this->scenario == 'forgetpassword'){
+                $this->addError($attribute, '邮箱还未注册.');
             }
         }
     }
@@ -231,6 +235,14 @@ class LoginForm extends Model
     {
         $redisKey='userInfo';
         $result = Yii::$app->session->get($redisKey);
+        if(!$result) return true;
+        $result = json_decode($result,true);
+        $user = DbUser::findOne(['uId'=>$result['uId']]);
+        $user->logoutTime = time();
+        $user->save();
+        $userLogin = DbUserLoginLog::find()->where(['uid'=>$result['uId']])->orderBy(['id'=>SORT_DESC])->one();
+        $userLogin->logoutTime= time();
+        $userLogin->save();
         return Yii::$app->session->remove($redisKey);
     }
 
@@ -268,7 +280,20 @@ class LoginForm extends Model
     }
 
 
-
+    /**
+     *  忘记密码
+     *
+     * @param $email
+     * @param $password
+     * @return Json
+     * */
+    public function forgetpassword(){
+        $user = DbUser::findOne(['email'=>$this->email]);
+        $user->salt =Yii::$app->security->generateRandomString();
+        $user->password = Yii::$app->security->generatePasswordHash($this->password.$user->salt);
+        $user->updateTime = $this->updateTime;
+        return $result = $user->save();
+    }
 
 
 
