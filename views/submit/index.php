@@ -22,13 +22,13 @@ use yii\helpers\Html;
             <div class="form-body">
                 <p id="result" class="err-msg"></p>
                 <div class="ui-input">
-                    <input type="text" name="userName" placeholder="用户名" value="<?= $model->userName?$model->userName:'';?>">
+                    <input type="text" name="title" placeholder="插件标题" value="<?= $model->userName?$model->userName:'';?>">
                 </div>
                 <div class="ui-input">
-                    <input type="text" name="email" id="userEmail" placeholder="邮箱" value="<?= $model->email?$model->email:'';?>">
+                    <input type="text" name="keyword"  placeholder="插件关键字,请用逗号隔开。例如：轮播图，幻灯片，焦点图。（写的越全越容易被用户找到下载哦！）" value="<?= $model->email?$model->email:'';?>">
                 </div>
                 <div class="ui-input">
-                    <input type="code" name="code" placeholder="请输入验证码" value="<?= $model->code?$model->code:'';?>">
+                    <textarea name="describe" class="form-control" placeholder="插件简介"></textarea>
                 </div>
                 <div class="ui-input">
                     <input type="password" name="password" placeholder="密码" value="<?= $model->password?$model->password:'';?>">
