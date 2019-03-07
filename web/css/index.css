@@ -1,0 +1,24 @@
+body{
+    background-color: #f1f1f1;
+}
+.layui-logo h1{
+    font-family: 宋体;
+    font-weight: bold;
+    height: 30%;
+    font-size: 25px;
+    position: relative;
+    top: -6px;
+}
+.layui-logo label{
+    position: relative;
+    bottom: -1px;
+    font-size: 10px;
+}
+.layui-container{
+    margin-top: 20px;
+}
+.submit-window{
+    height: 280px;
+    text-align: center;
+    line-height: 280px;
+}

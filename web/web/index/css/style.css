@@ -15,7 +15,11 @@ body { border-top: 50px solid #323436; border-bottom: 50px solid #323436; font: 
 .hd, .ft { width: 1180px; height: 50px; margin-left: auto; margin-right: auto;}
 .hd { position: relative; margin-top: -50px;}
 .hd h1 { float: left; margin-right: 20px;}
-.hd h1 a { float: left; width: 123px; height: 34px; margin-top: 8px; text-indent: -9999px; background-image: url(../img/logo2.png);}
+.hd h1 a { float: left; width: 123px; height: 34px; margin-top: 8px; text-indent: -9999px; background-image: url(../img/logo2.png);overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover}
 .nav { float: left;}
 .nav li { float: left; margin-right: 1px;}
 .nav a { float: left; padding: 0 25px; line-height: 50px; color: #cecece;}
