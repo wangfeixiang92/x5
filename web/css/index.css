@@ -27,6 +27,7 @@
 .good-container .template-index-nav .look-more{
     margin-top: 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 .good-container .template-index-nav .look-more a{
    color: #337ab7;

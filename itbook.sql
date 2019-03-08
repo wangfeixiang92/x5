@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-03-06 18:58:55
+Date: 2019-03-08 18:47:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -101,6 +101,23 @@ CREATE TABLE `source` (
 
 -- ----------------------------
 -- Records of source
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for subject
+-- ----------------------------
+DROP TABLE IF EXISTS `subject`;
+CREATE TABLE `subject` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `name` varchar(20) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '科目名称',
+  `sort` int(5) NOT NULL DEFAULT '0' COMMENT '排序',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1-可以访问 0 禁止访问',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of subject
 -- ----------------------------
 
 -- ----------------------------
