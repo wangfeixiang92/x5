@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$rules = require __DIR__ . '/rules.php';
 
 $config = [
     'id' => 'basic',
@@ -72,15 +73,14 @@ $config = [
             'port' => 6379,
             'database' => 0,
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'suffix' => '.html',
+            'rules' =>$rules
         ],
-        */
     ],
+
     'params' => $params,
 ];
 
