@@ -1,86 +1,62 @@
-﻿<?php
-use yii\helpers\Html;
- ?>
+<div class="container">
+    <form class="form-horizontal login-from" style="width: 50%" action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>" method="post">
+        <div class="form-group">
+            <label  class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <h2 class="form-signin-heading login-title">注册</h2>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <p class="login-label">已有账号？<a href="<?= Yii::$app->urlManager->createUrl(['login/index'])?>">前往登录</a></p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">账号</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="account" placeholder="请输入用户名">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">邮箱</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="account" placeholder="请输入邮箱">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">验证码</label>
+            <div class="col-sm-10 input-group" style="    padding-left: 2.5%;padding-right: 2.5%;">
+                <input type="text" class="form-control " name="account" placeholder="请输入验证码">
+                <span class="input-group-addon login-verification-code-btn btn btn-success">获取验证码</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control"  name="password" placeholder="请输入密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">确认密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control"  name="password" placeholder="再次确认密码">
+            </div>
+        </div>
 
-<div class="main">
-	<div class="contact" style="padding: 20px; background-color: #fff;">
-		<form id="wp_login_form" action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>"  method="post" class="form">
-			<div class="form-head">
-				<h2>注册</h2>
-				<p>已有账号？<a href="<?= Yii::$app->urlManager->createUrl(['login/index'])?>">前往登录</a></p>
-			</div>
-			<?php if(isset($error)):?>
-            <p style="text-align: center;color: red">
-                <?= $error?>
-            </p>
-            <?php endif;?>
-			<div class="form-body">
-				<p id="result" class="err-msg"></p>
-				<div class="ui-input">
-					<input type="text" name="userName" placeholder="用户名" value="<?= $model->userName?$model->userName:'';?>">
-				</div>
-                <div class="ui-input">
-                    <input type="text" name="email" id="userEmail" placeholder="邮箱" value="<?= $model->email?$model->email:'';?>">
-                    <input type="button" class="get-code-button" value="获取验证码" >
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label class="pull-left">
+                        <input type="checkbox" checked="checked" disabled>同意<a class="modalLink" href="<?= Yii::$app->urlManager->createUrl(['site/agreement'])?>" data-toggle="tooltip" data-html="true" data-placement="top" title="" style="color:#337ab7">《注册声明》《版权声明》</a>
+                    </label>
                 </div>
-                <div class="ui-input">
-                    <input type="code" name="code" placeholder="请输入验证码" value="<?= $model->code?$model->code:'';?>">
-                </div>
-				<div class="ui-input">
-					<input type="password" name="password" placeholder="密码" value="<?= $model->password?$model->password:'';?>">
-				</div>
-                <div class="ui-input">
-                    <input type="password" name="rpassword" placeholder="确认密码"  value="<?= $model->rpassword?$model->rpassword:'';?>">
-                </div>
-                <input type="hidden" name='<?=Yii::$app->request->csrfParam?>' value="<?=Yii::$app->request->csrfToken?>"/>
-				<button style="background-color: #21B384;" id="submitbtn" class="ui-button ui-button--primary">注册</button>
-                <p style="text-align: center;"><input type="checkbox" class="check" checked="">同意<a class="modalLink" href="http://x5.com/?r=site/agreement" data-toggle="tooltip" data-html="true" data-placement="top" title="" style="color:#337ab7">《注册声明》《版权声明》</a></p>
-			</div>
-		</form>
-	</div>
-</div>
-<script src="<?= \app\common\CommonHelper::getAssetUrl('/web/login/js/mailCompletion.js')?>"></script>
-    <script>
-        //初始化自动邮箱补全插件
-        var mail = new hcMailCompletion('userEmail');
-        mail.run();
-
-            $('.get-code-button').click(function () {
-               var userEmail = $('input[name="email"]').val();
-               if(!userEmail){
-                   alert('请输入邮箱地址');
-                   return false;
-               }
-                $(this).css('background-color','#999');
-                $(this).attr('disabled', true);
-                var left_time = 60;
-                var tt = window.setInterval(function(){
-                    left_time = left_time - 1;
-                    if (left_time <= 0) {
-                        window.clearInterval(tt);
-                        $('.get-code-button').val('获取验证码');
-                        $('.get-code-button').css('background-color','#21B384');
-                        $('.get-code-button').removeAttr('disabled');
-                    }else {
-                        $('.get-code-button').val('（' + left_time + '）秒后重新发送');
-                    }
-                }, 1000);
-                $.ajax({
-                    type: "POST",
-                    url:  "/?r=login/get-email-code",
-                    data: {
-                        _csrf:$('meta[name="csrf-token"]').attr("content"),
-                        userEmail:userEmail,
-                        scene:'register'
-                    },
-                    success: function(data){
-                        var data =JSON.parse(data);
-                        alert(data.msg);
-                        return false;
-                    }
-                });
-                return false;
-
-            });
-    </script>
-
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default btn-block black" >注册</button>
+            </div>
+        </div>
+    </form>
+</div> <!-- /container -->

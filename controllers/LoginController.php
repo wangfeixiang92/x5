@@ -87,7 +87,7 @@ class LoginController extends Controller
             }
             return $this->redirect(Yii::$app->request->referrer);
         }
-        return $this->render('login', [
+        return $this->render('index', [
             'model' => $model,
         ]);
     }

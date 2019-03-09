@@ -14,7 +14,11 @@ body{
 .left4per{
     margin-left: 4%;
 }
-
+.black:hover{
+    background-color: #101010;
+    border-color: #101010;
+    color: white;
+}
 #banner{
     height: 250px;
 }
