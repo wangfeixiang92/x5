@@ -5,13 +5,8 @@
     <bookmark url="file://$PROJECT_DIR$/common/DbUser.php" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c464207-8332-4e5b-b5bf-596a8a55900c" name="Default" comment="登录注册模块改版">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/layouts/submit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/submit.css" />
+    <list default="true" id="3c464207-8332-4e5b-b5bf-596a8a55900c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/rules.php" afterPath="$PROJECT_DIR$/config/rules.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/login/register.php" afterPath="$PROJECT_DIR$/views/login/register.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/submit/index.php" afterPath="$PROJECT_DIR$/views/submit/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -575,7 +570,7 @@
       <workItem from="1551358507544" duration="573000" />
       <workItem from="1551445594771" duration="2132000" />
       <workItem from="1552112984498" duration="11833000" />
-      <workItem from="1552217833612" duration="56000" />
+      <workItem from="1552217833612" duration="116000" />
     </task>
     <task id="LOCAL-00001" summary="登录注册模块改版">
       <created>1552123336125</created>
@@ -591,11 +586,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552123394475</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="登录注册模块改版">
+      <created>1552217983339</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1552217983339</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23666000" />
+    <option name="totallyTimeSpent" value="23726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="38" y="82" width="1795" height="964" extended-state="0" />
@@ -895,7 +897,7 @@
         <state relative-caret-position="-800">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <element signature="e#8#30#0#PHP" expanded="true" />
+            <element signature="e#8#30#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -913,7 +915,7 @@
         <state relative-caret-position="-19">
           <caret line="25" column="60" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="60" />
           <folding>
-            <element signature="e#66#88#0#PHP" expanded="true" />
+            <element signature="e#66#88#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
