@@ -1,6 +1,72 @@
-<?php
-use yii\helpers\Html;
-?>
+<div class="container">
+    <form class="form-horizontal submit-from"  action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>" method="post">
+        <div class="form-group">
+            <label  class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <h2 class="form-signin-heading submit-title">发布网站模板</h2>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <p class="submit-agreement">
+                    <label class="submit-label" onclick="explain('submit')">发布说明</label>
+                    <label class="submit-label" onclick="explain('reward')">奖励说明</label>
+                    <label class="submit-label" onclick="explain('punishment')">惩罚说明</label>
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">账号</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="account" placeholder="请输入用户名">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">邮箱</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="account" placeholder="请输入邮箱">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">验证码</label>
+            <div class="col-sm-10 input-group" style="    padding-left: 2.5%;padding-right: 2.5%;">
+                <input type="text" class="form-control " name="account" placeholder="请输入验证码">
+                <span class="input-group-addon login-verification-code-btn btn btn-success">获取验证码</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control"  name="password" placeholder="请输入密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">确认密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control"  name="password" placeholder="再次确认密码">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label class="pull-left">
+                        <input type="checkbox" checked="checked" disabled>同意<a class="modalLink" href="<?= Yii::$app->urlManager->createUrl(['site/agreement'])?>" data-toggle="tooltip" data-html="true" data-placement="top" title="" style="color:#337ab7">《注册声明》《版权声明》</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default btn-block black" >提交</button>
+            </div>
+        </div>
+    </form>
+</div> <!-- /container -->
+
+
+
 
 <div class="main">
     <div class="contact" style="padding: 20px; background-color: #fff;">

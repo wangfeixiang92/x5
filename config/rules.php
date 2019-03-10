@@ -4,6 +4,7 @@ return [
     '/login' => '/login/index',
     '/register' => '/login/register',
     '/forgetpassword' => '/login/forget-password',
-    '/agreement'=>'site/agreement'
+    '/agreement'=>'site/agreement',
+    '/submitweb'=>'submit/index'
 ]
 ?>

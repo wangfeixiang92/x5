@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label"></label>
+            <label class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
                 <p class="login-label">已有账号？<a href="<?= Yii::$app->urlManager->createUrl(['login/index'])?>">前往登录</a></p>
             </div>
