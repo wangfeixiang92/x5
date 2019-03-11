@@ -5,7 +5,7 @@
     }
 </style>
 <div class="container">
-    <form class="form-horizontal submit-from"  action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>" method="post">
+    <form class="form-horizontal submit-from" style="margin-bottom: 50px"  action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label  class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
@@ -24,40 +24,63 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">账号</label>
+            <label class="col-sm-2 control-label">标题</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="account" placeholder="请输入用户名">
+                <input type="text" class="form-control" name="title" placeholder="请输入模板标题">
             </div>
         </div>
         <div class="form-group">
-            <label  class="col-sm-2 control-label">邮箱</label>
+            <label  class="col-sm-2 control-label">简介</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="account" placeholder="请输入邮箱">
+                <input type="text" class="form-control" name="describe" placeholder="请输入模板的简介">
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">密码</label>
+            <label class="col-sm-2 control-label">标签</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control"  name="password" placeholder="请输入密码">
-            </div>
-        </div>
-        <div class="form-group">
-            <label  class="col-sm-2 control-label">确认密码</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control"  name="password" placeholder="再次确认密码">
+                <input type="text" class="form-control"  name="keyword" placeholder="插件关键字,请用逗号隔开。例如商城模板，商务模板，黑色大气。（写的越全越容易被用户找到下载哦！）">
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                    <label class="pull-left">
-                        <input type="checkbox" checked="checked" disabled>同意<a class="modalLink" href="<?= Yii::$app->urlManager->createUrl(['site/agreement'])?>" data-toggle="tooltip" data-html="true" data-placement="top" title="" style="color:#337ab7">《注册声明》《版权声明》</a>
-                    </label>
-                </div>
+            <label class="col-sm-2 control-label">IE兼容</label>
+            <div class="col-sm-4">
+                <select name="" class="form-control" id="">
+                    <option value="8">8</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+            </div>
+            <label class="col-sm-2 control-label">价格</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control"  name="price" placeholder="下载所需IT币(用户下载您将获得对应IT币)" >
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">官网地址</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control"  name="oldUrl" placeholder="官网地址，没用可以不填">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">上传文件</label>
+            <div class="col-sm-10">
+                <input type="file" name="resources" accept="application/x-zip-compressed,application/x-rar-compressed">
+                <p class="help-block">格式为 zip, rar 文件最大不能超过15mb</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">使用方法 </label>
+            <div class="col-sm-10">
+                <textarea name="manual" id="manual" cols="30" rows="10" class="form-control" placeholder="提供插件使用方法介绍等信息(奖励2倍以上IT币) "></textarea>
+            </div>
+        </div>
+        
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default btn-block black" >提交</button>
@@ -65,8 +88,12 @@
         </div>
     </form>
 </div> <!-- /container -->
-
 <script>
+
+    $(document).ready(function(){ CKEDITOR.replace('manual')});
+
+
+
     //询问框
     function explain(label){
         if(label == 'submit') {

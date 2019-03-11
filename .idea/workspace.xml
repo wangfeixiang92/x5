@@ -6,13 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c464207-8332-4e5b-b5bf-596a8a55900c" name="Default" comment="登录注册模块改版">
-      <change beforePath="$PROJECT_DIR$/.idea/basic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/basic.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/submit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/submit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/submit/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/submit/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/submit.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/submit.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +73,7 @@
           <entry key="data" value="2" />
           <entry key="gitignore" value="5" />
           <entry key="html" value="1" />
-          <entry key="js" value="2" />
+          <entry key="js" value="3" />
           <entry key="json" value="5" />
           <entry key="log" value="4" />
           <entry key="php" value="119" />
@@ -91,7 +87,7 @@
           <entry key="HTML" value="1" />
           <entry key="Image" value="2" />
           <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="2" />
+          <entry key="JavaScript" value="3" />
           <entry key="PHP" value="119" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="SQL" value="1" />
@@ -102,9 +98,9 @@
           <entry key="css" value="623" />
           <entry key="dummy" value="2" />
           <entry key="gitignore" value="5" />
-          <entry key="js" value="15" />
+          <entry key="js" value="20" />
           <entry key="json" value="16" />
-          <entry key="php" value="13683" />
+          <entry key="php" value="14027" />
           <entry key="txt" value="144" />
         </counts>
       </usages-collector>
@@ -112,8 +108,8 @@
         <counts>
           <entry key="CSS" value="623" />
           <entry key="JSON" value="16" />
-          <entry key="JavaScript" value="15" />
-          <entry key="PHP" value="13683" />
+          <entry key="JavaScript" value="20" />
+          <entry key="PHP" value="14027" />
           <entry key="PLAIN_TEXT" value="151" />
         </counts>
       </usages-collector>
@@ -124,8 +120,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/submit/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-342">
-              <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+            <state relative-caret-position="494">
+              <caret line="71" column="117" selection-start-line="71" selection-start-column="117" selection-end-line="71" selection-end-column="117" />
+              <folding>
+                <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/ckeditor/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -151,8 +159,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/layouts/submit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-363">
-              <caret line="38" column="104" selection-start-line="38" selection-start-column="104" selection-end-line="38" selection-end-column="104" />
+            <state relative-caret-position="454">
+              <caret line="42" column="118" selection-start-line="42" selection-start-column="118" selection-end-line="42" selection-end-column="118" />
             </state>
           </provider>
         </entry>
@@ -245,9 +253,10 @@
         <option value="$PROJECT_DIR$/views/login/register.php" />
         <option value="$PROJECT_DIR$/config/rules.php" />
         <option value="$PROJECT_DIR$/views/site/index.php" />
-        <option value="$PROJECT_DIR$/views/layouts/submit.php" />
         <option value="$PROJECT_DIR$/web/css/common.css" />
         <option value="$PROJECT_DIR$/web/css/submit.css" />
+        <option value="$PROJECT_DIR$/views/layouts/submit.php" />
+        <option value="$PROJECT_DIR$/web/ckeditor/config.js" />
         <option value="$PROJECT_DIR$/views/submit/index.php" />
       </list>
     </option>
@@ -362,47 +371,6 @@
             <path>
               <item name="x5" type="b2602c69:ProjectViewProjectNode" />
               <item name="x5" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="x5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="x5" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="dowebok" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="x5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="x5" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="x5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="x5" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="site" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="x5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="x5" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="submit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="x5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="x5" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="x5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="x5" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="x5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="x5" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -418,18 +386,18 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\code\x5\views\dowebok\login" />
-      <recent name="E:\code\x5\views\dowebok" />
-      <recent name="E:\code\x5\views\login" />
-      <recent name="E:\code\x5\web\gmat_static\index" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\code\x5\web\css" />
       <recent name="F:\code\x5\views\layouts" />
       <recent name="F:\code\x5\views\site" />
       <recent name="F:\code\x5\views\login" />
       <recent name="E:\code\x5\views\layouts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\code\x5\views\dowebok\login" />
+      <recent name="E:\code\x5\views\dowebok" />
+      <recent name="E:\code\x5\views\login" />
+      <recent name="E:\code\x5\web\gmat_static\index" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -471,7 +439,7 @@
       <workItem from="1551445594771" duration="2132000" />
       <workItem from="1552112984498" duration="11833000" />
       <workItem from="1552217833612" duration="116000" />
-      <workItem from="1552268076927" duration="6203000" />
+      <workItem from="1552268076927" duration="15049000" />
     </task>
     <task id="LOCAL-00001" summary="登录注册模块改版">
       <created>1552123336125</created>
@@ -494,11 +462,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552217983339</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="登录注册模块改版">
+      <created>1552276268157</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1552276268157</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29929000" />
+    <option name="totallyTimeSpent" value="38775000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="38" y="82" width="1795" height="964" extended-state="0" />
@@ -536,13 +511,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="登录注册模块改版" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1414">
-          <caret line="132" column="36" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/base/Security.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -848,13 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layouts/submit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-363">
-          <caret line="38" column="104" selection-start-line="38" selection-start-column="104" selection-end-line="38" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/dowebok/submit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-135">
@@ -890,10 +851,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/layouts/submit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="42" column="118" selection-start-line="42" selection-start-column="118" selection-end-line="42" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/ckeditor/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/submit/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-342">
-          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        <state relative-caret-position="494">
+          <caret line="71" column="117" selection-start-line="71" selection-start-column="117" selection-end-line="71" selection-end-column="117" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
