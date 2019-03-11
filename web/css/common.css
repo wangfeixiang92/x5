@@ -19,6 +19,15 @@ body{
     border-color: #101010;
     color: white;
 }
+.submit-label {
+    color: #d9534f;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.center{
+    text-align: center;
+}
+
 #banner{
     height: 250px;
 }

@@ -1,3 +1,9 @@
+<style>
+    .layui-itbook .layui-layer-btn0{
+        background-color: #323436;
+        border-color: #323436;
+    }
+</style>
 <div class="container">
     <form class="form-horizontal submit-from"  action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>" method="post">
         <div class="form-group">
@@ -10,10 +16,11 @@
             <label class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
                 <p class="submit-agreement">
-                    <label class="submit-label" onclick="explain('submit')">发布说明</label>
+                    <label class="submit-label " onclick="explain('submit')">发布说明</label>
                     <label class="submit-label" onclick="explain('reward')">奖励说明</label>
                     <label class="submit-label" onclick="explain('punishment')">惩罚说明</label>
                 </p>
+                <p class="center"><i class="fa fa-exclamation-circle"></i>提示：上传文件为zip或rar格式，请确保有演示文件，并能正常访问代码无错误！</p>
             </div>
         </div>
         <div class="form-group">
@@ -28,13 +35,7 @@
                 <input type="text" class="form-control" name="account" placeholder="请输入邮箱">
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">验证码</label>
-            <div class="col-sm-10 input-group" style="    padding-left: 2.5%;padding-right: 2.5%;">
-                <input type="text" class="form-control " name="account" placeholder="请输入验证码">
-                <span class="input-group-addon login-verification-code-btn btn btn-success">获取验证码</span>
-            </div>
-        </div>
+
         <div class="form-group">
             <label class="col-sm-2 control-label">密码</label>
             <div class="col-sm-10">
@@ -65,50 +66,6 @@
     </form>
 </div> <!-- /container -->
 
-
-
-
-<div class="main">
-    <div class="contact" style="padding: 20px; background-color: #fff;">
-        <form id="wp_login_form" action="<?= Yii::$app->urlManager->createUrl(['login/register'])?>"  method="post" class="form">
-            <div class="form-head">
-                <h2>发布插件</h2>
-                <p>
-                    <label class="submit-label" onclick="explain('submit')">发布说明</label>
-                    <label class="submit-label" onclick="explain('reward')">奖励说明</label>
-                    <label class="submit-label" onclick="explain('punishment')">惩罚说明</label>
-                </p>
-                <p><i class="fa fa-exclamation-circle"></i>提示：上传文件为zip或rar格式，请确保有演示文件，并能正常访问代码无错误！</p>
-            </div>
-            <?php if(isset($error)):?>
-                <p style="text-align: center;color: red">
-                    <?= $error?>
-                </p>
-            <?php endif;?>
-            <div class="form-body">
-                <p id="result" class="err-msg"></p>
-                <div class="ui-input">
-                    <input type="text" name="title" placeholder="插件标题" value="<?= $model->userName?$model->userName:'';?>">
-                </div>
-                <div class="ui-input">
-                    <input type="text" name="keyword"  placeholder="插件关键字,请用逗号隔开。例如：轮播图，幻灯片，焦点图。（写的越全越容易被用户找到下载哦！）" value="<?= $model->email?$model->email:'';?>">
-                </div>
-                <div class="ui-input">
-                    <textarea name="describe" class="form-control" placeholder="插件简介"></textarea>
-                </div>
-                <div class="ui-input">
-                    <input type="password" name="password" placeholder="密码" value="<?= $model->password?$model->password:'';?>">
-                </div>
-                <div class="ui-input">
-                    <input type="password" name="rpassword" placeholder="确认密码"  value="<?= $model->rpassword?$model->rpassword:'';?>">
-                </div>
-                <input type="hidden" name='<?=Yii::$app->request->csrfParam?>' value="<?=Yii::$app->request->csrfToken?>"/>
-                <button style="background-color: #21B384;" id="submitbtn" class="ui-button ui-button--primary">注册</button>
-                <p style="text-align: center;"><input type="checkbox" class="check" checked="">同意<a class="modalLink" href="http://x5.com/?r=site/agreement" data-toggle="tooltip" data-html="true" data-placement="top" title="" style="color:#337ab7">《注册声明》《版权声明》</a></p>
-            </div>
-        </form>
-    </div>
-</div>
 <script>
     //询问框
     function explain(label){

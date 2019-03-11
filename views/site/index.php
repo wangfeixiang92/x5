@@ -33,18 +33,18 @@
         <div class="col-md-4">
              <h5>发布网站模板</h5>
             <p>发布完整，可运行的网站前端页面代码（html，js,css 等），包括PC端，移动端（例如：公司官网，个人博客等的html代码）</p>
-            <a href="" class="center-block">前往发布>>></a>
+            <a href="<?=\yii\helpers\Url::to(['submit/index'])?>" class="center-block">前往发布>>></a>
         </div>
         <div class="col-md-4">
             <h5>发布素材插件</h5>
             <p>发布完整，可运行，无错误的html,js,css 插件代码，包括PC端，移动端（例如：个人写的加载框，css3特效，js小活动的代码）</p>
-            <a href="" class="center-block">前往发布>>></a>
+            <a href="<?=\yii\helpers\Url::to(['submit/code'])?>" class="center-block">前往发布>>></a>
         </div>
         <div class="col-md-4">
             <h5>发布工具类库</h5>
             <p>发布程序员常用的工具类库，（例如最新版本的编辑器，各种编程语言的手册等）</p>
             <br>
-            <a href="" class="center-block">前往发布>>></a>
+            <a href="<?=\yii\helpers\Url::to(['submit/tool'])?>" class="center-block">前往发布>>></a>
         </div>
     </div>
 </section>
