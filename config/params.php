@@ -9,5 +9,9 @@ return [
         'expire'=>600,
         'ipLimit'=>10,
         'emailLimit'=>10
+    ],
+    'upload'=>[
+        'web'=>'resources/web',
+        'code'=>'resources/code'
     ]
 ];

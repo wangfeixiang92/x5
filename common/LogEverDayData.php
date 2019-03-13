@@ -15,18 +15,18 @@ use Yii;
  * @property integer $date
  */
 
-class DbEverDayDataLog extends \yii\db\ActiveRecord
+class LogEverDayData extends \yii\db\ActiveRecord
 {
     public static function getDb()
     {
-        return Yii::$app->db;
+        return Yii::$app->db_log;
     }
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'everDayDataLog';
+        return 'everDayData';
     }
 
 }

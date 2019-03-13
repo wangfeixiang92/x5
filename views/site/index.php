@@ -33,7 +33,7 @@
         <div class="col-md-4">
              <h5>发布网站模板</h5>
             <p>发布完整，可运行的网站前端页面代码（html，js,css 等），包括PC端，移动端（例如：公司官网，个人博客等的html代码）</p>
-            <a href="<?=\yii\helpers\Url::to(['submit/index'])?>" class="center-block">前往发布>>></a>
+            <a href="<?=\yii\helpers\Url::to(['submit/web'])?>" class="center-block">前往发布>>></a>
         </div>
         <div class="col-md-4">
             <h5>发布素材插件</h5>

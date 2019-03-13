@@ -16,18 +16,18 @@ use Yii;
  * @property integer $address
  */
 
-class DbUserLoginLog extends \yii\db\ActiveRecord
+class LogUserLogin extends \yii\db\ActiveRecord
 {
     public static function getDb()
     {
-        return Yii::$app->db;
+        return Yii::$app->db_log;
     }
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'userLoginLog';
+        return 'userLogin';
     }
 
 }

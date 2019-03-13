@@ -27,7 +27,9 @@ body{
 .center{
     text-align: center;
 }
-
+.error-label{
+    color: #d9534f;
+}
 #banner{
     height: 250px;
 }

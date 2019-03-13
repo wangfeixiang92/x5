@@ -2,10 +2,10 @@
 
 namespace app\models;
 
-use app\common\DbEverDayDataLog;
+use app\common\LogEverDayData;
 use app\common\DbLevelName;
 use app\common\DbUser;
-use app\common\DbUserLoginLog;
+use app\common\LogUserLogin;
 use Codeception\Module\Db;
 use Yii;
 use yii\base\Model;
@@ -240,7 +240,7 @@ class LoginForm extends Model
         $user = DbUser::findOne(['uId'=>$result['uId']]);
         $user->logoutTime = time();
         $user->save();
-        $userLogin = DbUserLoginLog::find()->where(['uid'=>$result['uId']])->orderBy(['id'=>SORT_DESC])->one();
+        $userLogin = LogUserLogin::find()->where(['uid'=>$result['uId']])->orderBy(['id'=>SORT_DESC])->one();
         $userLogin->logoutTime= time();
         $userLogin->save();
         return Yii::$app->session->remove($redisKey);

@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-use app\common\DbUserLoginLog;
+use app\common\LogUserLogin;
 use wsl\ip2location\Ip2Location;
 use yii\base\Model;
 /**
@@ -34,7 +34,7 @@ class UserLoginLog extends Model
    *
    * */
     public function addLog($uid){
-        $userLoginLog = new DbUserLoginLog();
+        $userLoginLog = new LogUserLogin();
         $userLoginLog->uid=$uid;
         $userLoginLog->loginTime=time();
         $userLoginLog->ip = \Yii::$app->request->getUserIP();
