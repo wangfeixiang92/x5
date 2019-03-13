@@ -5,29 +5,9 @@
     <bookmark url="file://$PROJECT_DIR$/common/DbUser.php" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c464207-8332-4e5b-b5bf-596a8a55900c" name="Default" comment="增加压缩包">
-      <change afterPath="$PROJECT_DIR$/common/LogEverDayData.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/WebSource.php" afterDir="false" />
+    <list default="true" id="3c464207-8332-4e5b-b5bf-596a8a55900c" name="Default" comment="富文本">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/DbEverDayDataLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/DbWebSource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/DbUserLoginLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/LogUserLogin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/params.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/params.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/rules.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/rules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SubmitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SubmitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/EveryDayData.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/EveryDayData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/LoginForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/LoginForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/UserLoginLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/UserLoginLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/submit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/submit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/submit/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/submit/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/ckeditor/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/ckeditor/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +75,8 @@
           <entry key="js" value="3" />
           <entry key="json" value="5" />
           <entry key="log" value="4" />
-          <entry key="php" value="151" />
+          <entry key="md" value="1" />
+          <entry key="php" value="152" />
           <entry key="png" value="2" />
           <entry key="sql" value="1" />
         </counts>
@@ -107,7 +88,8 @@
           <entry key="Image" value="2" />
           <entry key="JSON" value="5" />
           <entry key="JavaScript" value="3" />
-          <entry key="PHP" value="151" />
+          <entry key="Markdown" value="1" />
+          <entry key="PHP" value="152" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="SQL" value="1" />
         </counts>
@@ -119,8 +101,9 @@
           <entry key="gitignore" value="5" />
           <entry key="js" value="50" />
           <entry key="json" value="16" />
+          <entry key="md" value="98" />
           <entry key="php" value="17543" />
-          <entry key="txt" value="153" />
+          <entry key="txt" value="164" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -128,8 +111,9 @@
           <entry key="CSS" value="640" />
           <entry key="JSON" value="16" />
           <entry key="JavaScript" value="50" />
+          <entry key="Markdown" value="98" />
           <entry key="PHP" value="17543" />
-          <entry key="PLAIN_TEXT" value="170" />
+          <entry key="PLAIN_TEXT" value="181" />
         </counts>
       </usages-collector>
     </session>
@@ -150,24 +134,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
               <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="69" column="13" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/css/common.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="29" column="12" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -206,6 +172,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="152">
+                <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/LogUserLogin.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="551">
@@ -217,8 +195,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/EveryDayData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="315">
+              <caret line="59" column="18" lean-forward="true" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -226,8 +204,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/LoginForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-156">
-              <caret line="55" column="58" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="58" />
+            <state relative-caret-position="623">
+              <caret line="276" column="37" selection-start-line="276" selection-start-column="37" selection-end-line="276" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/UserLoginLog.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="36" column="40" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -310,6 +297,7 @@
         <option value="$PROJECT_DIR$/models/EveryDayData.php" />
         <option value="$PROJECT_DIR$/models/WebSource.php" />
         <option value="$PROJECT_DIR$/common/LogUserLogin.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -515,7 +503,7 @@
       <workItem from="1551445594771" duration="2132000" />
       <workItem from="1552112984498" duration="11833000" />
       <workItem from="1552217833612" duration="116000" />
-      <workItem from="1552268076927" duration="51265000" />
+      <workItem from="1552268076927" duration="51487000" />
     </task>
     <task id="LOCAL-00001" summary="登录注册模块改版">
       <created>1552123336125</created>
@@ -545,11 +533,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552276268157</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="富文本">
+      <created>1552445395986</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1552445395986</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74991000" />
+    <option name="totallyTimeSpent" value="75213000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="107" y="100" width="1792" height="962" extended-state="0" />
@@ -584,16 +579,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="登录注册模块改版" />
-    <option name="LAST_COMMIT_MESSAGE" value="登录注册模块改版" />
+    <MESSAGE value="富文本" />
+    <option name="LAST_COMMIT_MESSAGE" value="富文本" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/common/CommonHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="16" column="38" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/dowebok/detail.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4538" />
@@ -826,11 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/UserLoginLog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-97" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1197" />
@@ -874,13 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/LoginForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-156">
-          <caret line="55" column="58" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
@@ -919,13 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/EveryDayData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/WebSource.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -936,6 +906,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common/LogUserLogin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/UserLoginLog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="36" column="40" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/LoginForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="276" column="37" selection-start-line="276" selection-start-column="37" selection-end-line="276" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/EveryDayData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="59" column="18" lean-forward="true" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/common/LogEverDayData.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -943,10 +941,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/LogUserLogin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="152">
+            <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
