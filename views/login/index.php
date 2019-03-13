@@ -36,6 +36,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" name='<?=Yii::$app->request->csrfParam?>' value="<?=Yii::$app->request->csrfToken?>"/>
                 <button type="submit" class="btn btn-default btn-block black">登录</button>
             </div>
         </div>

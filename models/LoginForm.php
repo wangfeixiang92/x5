@@ -24,6 +24,7 @@ class LoginForm extends Model
     public $password;
     public $cName;
     public $phone;
+    public $photo;
     public $email;
     public $level;
     public $levelName;
@@ -220,7 +221,7 @@ class LoginForm extends Model
             ->orWhere(['email'=>$this->account])
             ->asArray()
             ->one();
-        $redisKey='userInfo';
+        $redisKey=Yii::$app->params['redisUserinfoKey'];
         Yii::$app->session->set($redisKey, json_encode($userInfo));
         //增加统计记录
         (new UserLoginLog())->addLog($userInfo['uId']);
@@ -233,7 +234,7 @@ class LoginForm extends Model
      * */
     public function logout()
     {
-        $redisKey='userInfo';
+        $redisKey=Yii::$app->params['redisUserinfoKey'];
         $result = Yii::$app->session->get($redisKey);
         if(!$result) return true;
         $result = json_decode($result,true);
@@ -272,6 +273,13 @@ class LoginForm extends Model
         $result = $user->save();
         if($result){
             $this->uId =Yii::$app->db->getLastInsertID();
+            //登录
+            $userInfo = DbUser::find()
+                ->where(['uId'=>$this->uId])
+                ->asArray()
+                ->one();
+            $redisKey=Yii::$app->params['redisUserinfoKey'];
+            Yii::$app->session->set($redisKey, json_encode($userInfo));
             //增加统计记录
             (new UserLoginLog())->addLog( $this->uId);
             (new EveryDayData())->addRegisterLog();

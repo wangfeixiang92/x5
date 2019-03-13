@@ -66,8 +66,8 @@ $config = [
             'database' => 0,
         ],
     ],
-        'db' => $db['main'],
-        'db_log' => $db['log'],
+        'db' => $db['itbook'],
+        'itbook_log' => $db['itbook_log'],
         'redis' => [
             'class' => 'yii\redis\Connection',
             'hostname' => '192.168.33.10',

@@ -17,6 +17,8 @@ class LoginController extends Controller
 
     public function init()
     {
+        $userInfo =Yii::$app->session->get(Yii::$app->params['redisUserinfoKey']);
+        Yii::$app->view->params['userInfo']=json_decode($userInfo,true);
         $seo['title'] ='jQuery插件库-收集最全最新最好的jQuery插件';
         $seo['keywords'] ='jQuery,jQuery特效,jQuery ui,jQuery插件,jQuery 教程,css3,网页特效,JS特效';
         $seo['description'] ='本站致力于收集jQuery插件和提供各种jQuery特效的详细使用方法,在线预览，jQuery插件下载及教程';
@@ -92,10 +94,10 @@ class LoginController extends Controller
             if(!$result){
                 return $this->render('login',['model'=>$model]);
             }
-            if(empty(Yii::$app->request->referrer)){
+            if(!empty(Yii::$app->request->referrer)){
                 return $this->redirect( Yii::$app->user->returnUrl);
             }
-            return $this->redirect(Yii::$app->request->referrer);
+            return $this->goHome();
         }
         return $this->render('index', [
             'model' => $model,
@@ -128,10 +130,10 @@ class LoginController extends Controller
             if(!$result){
                 return $this->render('register',['model'=>$model]);
             }
-            if(empty(Yii::$app->request->referrer)){
+            if(!empty(Yii::$app->request->referrer)){
                 return $this->redirect( Yii::$app->user->returnUrl);
             }
-            return $this->redirect(Yii::$app->request->referrer);
+            return $this->redirect('login.html');
         }
         return $this->render('register',['model'=>$model]);
     }

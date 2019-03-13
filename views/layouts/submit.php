@@ -55,11 +55,11 @@ AppAsset::register($this);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">ITbook</iT></a>
+                <a class="navbar-brand" href="<?=\yii\helpers\Url::to(['site/index'])?>">ITbook</iT></a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">首页</a></li>
+                    <li class="active"><a href="<?=\yii\helpers\Url::to(['site/index'])?>">首页</a></li>
                     <li><a href="#about">网站模板</a></li>
                     <li><a href="#contact">素材插件</a></li>
                     <li><a href="#contact">工具类库</a></li>

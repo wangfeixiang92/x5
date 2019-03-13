@@ -17,6 +17,7 @@ AppAsset::register($this);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= Html::csrfMetaTags() ?>
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title> <?=isset($this->params['seo']['title'])?Html::encode($this->params['seo']['title']):'';?></title>
     <meta name="keywords" content="<?=isset($this->params['seo']['keywords'])?Html::encode($this->params['seo']['keywords']):'';?>" />
@@ -26,7 +27,7 @@ AppAsset::register($this);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= \app\common\CommonHelper::getAssetUrl('/css/common.css') ?>" rel="stylesheet">
     <link href="<?= \app\common\CommonHelper::getAssetUrl('/css/login.css') ?>" rel="stylesheet">
-
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
@@ -38,6 +39,7 @@ AppAsset::register($this);
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <header id="header">
@@ -50,11 +52,11 @@ AppAsset::register($this);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">ITbook</iT></a>
+                <a class="navbar-brand" href="<?=\yii\helpers\Url::to(['site/index'])?>">ITbook</iT></a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">首页</a></li>
+                    <li class="active"><a href="<?=\yii\helpers\Url::to(['site/index'])?>">首页</a></li>
                     <li><a href="#about">网站模板</a></li>
                     <li><a href="#contact">素材插件</a></li>
                     <li><a href="#contact">工具类库</a></li>

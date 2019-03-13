@@ -67,7 +67,7 @@ use yii\helpers\Html;
                 }, 1000);
                 $.ajax({
                     type: "POST",
-                    url:  "/?r=login/get-email-code",
+                    url:  "/login/get-email-code",
                     data: {
                         _csrf:$('meta[name="csrf-token"]').attr("content"),
                         userEmail:userEmail,

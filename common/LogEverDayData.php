@@ -19,7 +19,7 @@ class LogEverDayData extends \yii\db\ActiveRecord
 {
     public static function getDb()
     {
-        return Yii::$app->db_log;
+        return Yii::$app->itbook_log;
     }
     /**
      * @inheritdoc

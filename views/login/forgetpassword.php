@@ -41,6 +41,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" name='<?=Yii::$app->request->csrfParam?>' value="<?=Yii::$app->request->csrfToken?>"/>
                 <button type="submit" class="btn btn-default btn-block black" >重置密码</button>
             </div>
         </div>

@@ -31,7 +31,7 @@ AppAsset::register($this);
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
         <link href="<?= \app\common\CommonHelper::getAssetUrl('/css/index.css') ?>" rel="stylesheet">
     <?php endif;?>
-
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
@@ -60,11 +60,11 @@ AppAsset::register($this);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">ITbook</iT></a>
+                <a class="navbar-brand" href="<?=\yii\helpers\Url::to(['site/index'])?>">ITbook</iT></a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">首页</a></li>
+                    <li class="active"><a href="<?=\yii\helpers\Url::to(['site/index'])?>">首页</a></li>
                     <li><a href="#about">网站模板</a></li>
                     <li><a href="#contact">素材插件</a></li>
                     <li><a href="#contact">工具类库</a></li>
@@ -78,10 +78,18 @@ AppAsset::register($this);
                         </div>
                         <button type="submit" class="btn btn-default">搜索</button>
                     </form>
+                    <?php if($this->params['userInfo']):?>
+                    <div class="col-xs-2 placeholder pull-right" >
+                        <a href="">
+                            <img class="img-circle" style="width:50px;height: 50px" src="<?=$this->params['userInfo']['photo']?>"  class="img-responsive" alt="Generic placeholder thumbnail">
+                        </a>
+                    </div>
+                    <?php else:?>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="<?=\yii\helpers\Url::to(['login/index'])?>">登录</a></li>
                         <li><a href="<?=\yii\helpers\Url::to(['login/register'])?>">注册</a></li>
                     </ul>
+                    <?php endif;?>
                 </div>
             </div><!--/.nav-collapse -->
         </div>

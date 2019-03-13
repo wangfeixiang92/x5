@@ -12,6 +12,7 @@ use Yii;
  * @property string $password
  * @property string $cName
  * @property string $phone
+ * @property string $photo
  * @property string $email
  * @property integer $level
  * @property string $levelName
