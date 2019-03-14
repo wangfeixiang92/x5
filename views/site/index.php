@@ -60,7 +60,7 @@
     </ul>
     <div class="row goods-list">
         <div class="col-lg-3 bottom20per top10per">
-            <a href="http://www.dowebok.com/2110.html" title="圆形动态时钟"><img src="/web/index/img/2110s.png" alt="圆形动态时钟"></a>
+            <a href="<?=\yii\helpers\Url::to(['web/id'])?>" title="圆形动态时钟"><img src="/web/index/img/2110s.png" alt="圆形动态时钟"></a>
             <h5><a href="http://www.dowebok.com/2110.html" title="圆形动态时钟">圆形动态时钟</a></h5>
             <div class="good-info">
                 <time title="日期" class="pull-left">东方不败</time>
@@ -359,5 +359,3 @@
         // },
     })
 </script>
-</body>
-</html>

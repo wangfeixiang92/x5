@@ -53,20 +53,22 @@ class WebSource extends Model
      */
     public function rules()
     {
-        return [
-            [['manual','oldUrl'],'string'],
-            ['resources', 'required', 'message' => '请选择文件'],
-            ['resources', 'file', 'message' => '请选择文件'],
-            ['resources', 'validateResources','message'=>'上传的文件不合规'],
-            [['title'], 'string', 'min' => 5, 'max' => 255,'message' => '标题长度必须大于5个字符'],
-            [['keyword'],'string', 'min' => 2,'max' => 255,'message' => '标签长度必须大于2个字符'],
-            [['describe'],'string','max' => 255,'message' => '简介长度不能超过255个字符'],
-            [['price'],'integer','max'=>1000,'message'=>'价格不能大于1000'],
-            [['price'],'default', 'value' =>0],
-            [['oldUrl'],'url', 'defaultScheme' => 'http','message'=>'官网地址不合法'],
-            [['IE'],'in', 'range' => [6,7,8,9,10, 11],'message'=>'IE版本选择不合法']
+                return [
+                    [['manual','oldUrl'],'string','on'=> 'submit-web'],
+                    ['resources', 'required', 'message' => '请选择文件','on'=> 'submit-web'],
+                    ['resources', 'file', 'message' => '请选择文件','on'=> 'submit-web'],
+                    ['resources', 'validateResources','message'=>'上传的文件不合规','on'=> 'submit-web'],
+                    [['title'], 'string', 'min' => 5, 'max' => 255,'message' => '标题长度必须大于5个字符','on'=> 'submit-web'],
+                    [['keyword'],'string', 'min' => 2,'max' => 255,'message' => '标签长度必须大于2个字符','on'=> 'submit-web'],
+                    [['describe'],'string','max' => 255,'message' => '简介长度不能超过255个字符','on'=> 'submit-web'],
+                    [['price'],'integer','max'=>1000,'message'=>'价格不能大于1000','on'=> 'submit-web'],
+                    [['price'],'default', 'value' =>0,'on'=> 'submit-web'],
+                    [['oldUrl'],'url', 'defaultScheme' => 'http','message'=>'官网地址不合法','on'=> 'submit-web'],
+                    [['IE'],'in', 'range' => [6,7,8,9,10, 11],'message'=>'IE版本选择不合法','on'=> 'submit-web'],
+                    ['id','required', 'message' => 'id不合法','on'=> 'detail'],
+                    ['id','integer', 'message' => 'id不合法','on'=> 'detail']
+                ];
 
-        ];
     }
 
     /**
