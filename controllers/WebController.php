@@ -6,6 +6,7 @@ use app\models\MailForm;
 use app\models\WebSource;
 use Yii;
 use yii\base\ErrorException;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\HttpException;
@@ -16,7 +17,7 @@ use app\models\ContactForm;
 
 class WebController extends CommonController
 {
-    public $layout='web-detail';
+    public $layout='list';
 
     /**
      * Displays homepage.
@@ -25,7 +26,9 @@ class WebController extends CommonController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $count=100;
+        $pagination = new Pagination(['totalCount' => $count]);
+        return $this->render('index',['pagination'=>$pagination]);
     }
 
 
@@ -34,6 +37,7 @@ class WebController extends CommonController
      * */
 
     public function actionDetail(){
+        $this->layout='web-detail';
         $model = new WebSource();
         $model->load(Yii::$app->request->get('id'), '');
         $checkRes = $model->validate();

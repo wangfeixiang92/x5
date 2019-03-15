@@ -7,6 +7,8 @@ return [
     '/forgetpassword' => '/login/forget-password',
     '/agreement'=>'site/agreement',
     '/submitweb'=>'submit/web',
+    '/web/index'=> 'web/index',
     '/web/<id:\d+>'=> 'web/detail',
+    '/person'=>'person/index',
 ]
 ?>
