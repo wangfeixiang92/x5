@@ -93,6 +93,59 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <?= $content ?>
 <?php $this->endBody() ?>
+
+<!-- Modal -->
+<div class="modal fade" id="report-model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">举报</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="radio ">
+                        <label>
+                            <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                             下载文件与预览图不一致
+                        </label>
+                    </div>
+                    <div class="radio ">
+                        <label>
+                            <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                            下载文件有所损坏
+                        </label>
+                    </div>
+                    <div class="radio ">
+                        <label>
+                            <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                            该文件侵害了你的权力
+                        </label>
+                    </div>
+                    <div class="radio ">
+                        <label>
+                            <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                            该文件内容含有违法违规内容
+                        </label>
+                    </div>
+                    <div class="radio ">
+                        <label>
+                            <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                           其他
+                        </label>
+                    </div>
+                    <div class="form-group top20per">
+                        <textarea name="" class="form-control" cols="30" rows="10" placeholder="请在这里具体描述举报内容"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">立即举报</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer id="footer" class="footer">
     <div class="row footer-bottom">
         <ul class="list-inline text-center">

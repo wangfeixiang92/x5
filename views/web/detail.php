@@ -29,7 +29,7 @@
                             <span><i class="fa fa-heart"></i>收藏:（1128）</span>
                             <span><i class="fa fa-download"></i>下载:（1128）</span>
                             <span><i class="fa fa-commenting"></i>评价:（1128）</span>
-                            <span class="pull-right "><i class="fa fa-warning"></i>举报</span>
+                            <span class="pull-right" data-toggle="modal" data-target="#report-model"><i class="fa fa-warning"></i>举报</span>
                         </p>
                         <div class="bshare-custom pull-right" >
                             <a title="分享到QQ好友" class="bshare-qqim"></a>
