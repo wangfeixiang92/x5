@@ -38,6 +38,9 @@ body{
 .right5per{
     margin-right: 5px;
 }
+.pointer{
+    cursor: pointer;
+}
 .black:hover{
     background-color: #101010;
     border-color: #101010;

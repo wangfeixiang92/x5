@@ -27,7 +27,7 @@ AppAsset::register($this);
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= \app\common\CommonHelper::getAssetUrl('/css/common.css') ?>" rel="stylesheet">
-    <link href="<?= \app\common\CommonHelper::getAssetUrl('/css/list.css') ?>" rel="stylesheet">
+    <link href="<?= \app\common\CommonHelper::getAssetUrl('/css/person.css') ?>" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
