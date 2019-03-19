@@ -22,7 +22,8 @@
         "yiisoft/yii2-redis": "~2.0.0",
         "monolog/monolog":"^1.0",
         "myweishanli/yii2-ip2location": "~1.0.0",
-        "twbs/bootstrap": "^4.3"
+        "twbs/bootstrap": "^4.3",
+         "mdmsoft/yii2-admin": "~2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

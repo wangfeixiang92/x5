@@ -80,7 +80,7 @@ $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
         <div class="form-group">
             <label class="col-sm-2 control-label">上传文件</label>
             <div class="col-sm-10">
-                <input type="file" name="resources" accept="application/x-zip-compressed,application/x-rar-compressed" >
+                <input type="file" name="resources">
                 <p class="help-block">文件大小不得超过30M</p>
             </div>
         </div>

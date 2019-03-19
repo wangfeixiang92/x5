@@ -66,4 +66,13 @@ return array (
       '@wsl/ip2location' => $vendorDir . '/myweishanli/yii2-ip2location/src',
     ),
   ),
+  'mdmsoft/yii2-admin' => 
+  array (
+    'name' => 'mdmsoft/yii2-admin',
+    'version' => '2.9.0.0',
+    'alias' => 
+    array (
+      '@mdm/admin' => $vendorDir . '/mdmsoft/yii2-admin',
+    ),
+  ),
 );

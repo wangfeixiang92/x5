@@ -12,7 +12,8 @@ return [
     ],
     'upload'=>[
         'web'=>'resources/web',
-        'code'=>'resources/code'
+        'code'=>'resources/code',
+        'webPrewiew'=>'/demo/web/'
     ],
     'redisUserinfoKey'=>'userInfo'
 ];

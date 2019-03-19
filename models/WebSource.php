@@ -47,6 +47,7 @@ class WebSource extends Model
     public $isSafari;
     public $isResponseType;
     public $resources;
+    public $previewUrl;
 
     /**
      * @return array the validation rules.
@@ -77,7 +78,7 @@ class WebSource extends Model
     public function validateResources($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            if(!in_array(trim($this->resources->type),['application/x-zip-compressed','application/x-rar-compressed']) || !in_array(trim($this->resources->extension),['zip', 'rar'])){
+            if(!in_array(trim($this->resources->type),['application/x-zip-compressed','application/octet-stream']) || !in_array(trim($this->resources->extension),['zip', 'rar'])){
                 $this->addError('上传的文件格式错误');
             }
             if($this->resources->size > 30*1024*1024){
@@ -97,6 +98,7 @@ class WebSource extends Model
         $source->manual = $this->manual;
         $source->oldUrl = $this->oldUrl;
         $source->soureUrl=$this->soureUrl;
+        $source->previewUrl=Yii::$app->params['upload']['webPrewiew'].basename($this->soureUrl);
         $source->updateTime = time();
         $source->registerTime = date('Y-m-d H:i:s',time());
         $source->price = $this->price;

@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/comparator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/diff" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/exporter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/sebastian/recursion-context" vcs="Git" />
   </component>
 </project>

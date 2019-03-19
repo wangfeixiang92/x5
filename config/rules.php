@@ -9,6 +9,7 @@ return [
     '/submitweb'=>'submit/web',
     '/web/index'=> 'web/index',
     '/web/<id:\d+>'=> 'web/detail',
+    '/preview/<id:\d+>'=> 'preview/index',
     '/person'=>'person/index',
 ]
 ?>
